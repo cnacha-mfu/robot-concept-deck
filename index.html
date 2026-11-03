@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="deck-version" content="2026-11-03.13">
+<meta name="deck-version" content="2026-11-03.14">
 <meta name="description" content="ARIC Care Robot Concept — แนวคิดหุ่นยนต์เพื่อการรักษาและสุขภาวะ: สร้างสมองที่เข้าใจการดูแลคนไทย มหาวิทยาลัยแม่ฟ้าหลวง">
 <link rel="icon" type="image/svg+xml" href="aric_logo_mark.svg?v=d">
 <title>ARIC Care Robot Concept — หุ่นยนต์เพื่อการรักษาและสุขภาวะ</title>
@@ -485,11 +485,12 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 .loop .st .d{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--mono);flex:none}
 .loop .ar{margin-left:16px;width:2px;height:16px;background:var(--tan)}
 /* ---------- compare: Unitree / AgiBot / UBTECH ---------- */
-.cmp{display:grid;grid-template-columns:170px 1fr 1.25fr 1fr;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.cmp{display:grid;grid-template-columns:205px 1fr 1.3fr 1fr;background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden}
 .cmp-h{padding:12px 16px 10px;font-size:22px;font-weight:600;border-bottom:2px solid var(--rule);position:relative}
 .cmp-h span{display:block;font:500 12.5px var(--mono);color:var(--mute);margin-top:2px}
 .cmp-h.pick{background:var(--red);color:#FFF6E6;border-bottom-color:var(--red-d)}
 .cmp-h.pick span{color:#F2C46A}
+.cmp-h.cmp-0{font-size:13px;font-weight:500;color:var(--mute);line-height:1.4;align-self:end}
 .cmp-h em{position:absolute;right:12px;top:12px;font-style:normal;font-size:12.5px;font-weight:600;background:#F2C46A;color:#4A0712;padding:3px 10px;border-radius:999px}
 .cmp-k{padding:10px 16px;font-size:14.5px;font-weight:600;color:var(--ink2);border-top:1px solid var(--rule2);background:var(--cream2);display:flex;align-items:center}
 .cmp-c{padding:10px 16px;font-size:14.5px;font-weight:300;color:var(--ink2);line-height:1.45;border-top:1px solid var(--rule2);display:flex;align-items:flex-start;gap:8px}
@@ -844,12 +845,12 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
   <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="done">ใช้ที่ไหน</span><i></i><span class="on">สิ่งที่ขอ</span></div>
   <div class="head">
     <h1 class="t">ทำไมเลือก AgiBot — <span class="red">แพลตฟอร์มเปิด ตั้งแต่ข้อมูลจนถึงตัวหุ่น</span></h1>
-    <div class="sub">เปรียบเทียบผู้ผลิตหุ่นยนต์ฮิวแมนนอยด์จากจีน ๓ รายที่หาได้ในไทย ด้าน<b>ความเปิดสำหรับการเรียน การสอน และการวิจัย</b></div>
+    <div class="sub">ผู้ผลิตหุ่นยนต์ฮิวแมนนอยด์ ๓ รายที่หาได้ในไทย ทุกรายมี SDK — ตารางนี้แสดงเฉพาะ<b>จุดที่ต่างกัน เมื่อวัดกับโจทย์ของเรา: สอน วิจัย และสร้างสมองสำหรับงานดูแล</b></div>
   </div>
   <div class="body" style="flex-direction:column;gap:12px">
-    <div class="cmp a-rise" style="--d:200ms"><div class="cmp-h"></div><div class="cmp-h">Unitree<span>G1 · H1 · Go2</span></div><div class="cmp-h pick">AgiBot<span>X2 Ultra · D1 Edu</span><em>เราเลือก</em></div><div class="cmp-h">UBTECH<span>Walker S2 · หุ่นยนต์การศึกษา</span></div><div class="cmp-k">แนวทางหลัก</div><div class="cmp-c">หุ่นยนต์เคลื่อนที่คล่องตัว ชุมชนผู้ใช้ใหญ่</div><div class="cmp-c pick">Embodied AI ครบวงจร: หุ่น ข้อมูล และโมเดล</div><div class="cmp-c">หุ่นยนต์งานโรงงาน และหุ่นยนต์การศึกษาขนาดเล็ก</div><div class="cmp-k">SDK พัฒนาต่อยอด</div><div class="cmp-c"><i class="ck ok">✓</i>เปิด (unitree_sdk2) เฉพาะรุ่น EDU</div><div class="cmp-c pick"><i class="ck ok">✓</i>เปิดทั้ง ๒ รุ่นที่เลือก · Python · C++ · ROS 2</div><div class="cmp-c"><i class="ck mid">◐</i>มีเอกสาร SDK (ปลาย ๒๕๖๘) เน้นงานโรงงาน</div><div class="cmp-k">ข้อมูลและโมเดล AI แบบเปิด</div><div class="cmp-c"><i class="ck ok">✓</i>โมเดล UnifoLM</div><div class="cmp-c pick"><i class="ck ok">✓</i>ชุดข้อมูล AgiBot World ~1 ล้านตัวอย่าง + โมเดลพื้นฐาน GO-1</div><div class="cmp-c"><i class="ck no">–</i>ไม่พบแบบเปิด</div><div class="cmp-k">การจำลองแบบเปิด</div><div class="cmp-c"><i class="ck ok">✓</i>MuJoCo · Isaac Gym / Lab</div><div class="cmp-c pick"><i class="ck ok">✓</i>Genie Sim 3.0 (บน Isaac Sim) · MuJoCo</div><div class="cmp-c"><i class="ck no">–</i>ไม่พบแบบเปิด</div><div class="cmp-k">ช่องทางในไทย</div><div class="cmp-c"><i class="ck ok">✓</i>ตัวแทนจำหน่ายหลายราย</div><div class="cmp-c pick"><i class="ck ok">✓</i>ตัวแทนในไทย พร้อมอบรม ณ สถานที่ และหลักสูตรพัฒนาต่อยอด</div><div class="cmp-c"><i class="ck mid">◐</i>สั่งพิเศษผ่านพันธมิตร</div></div>
-    <div class="why3 a-rise" style="--d:900ms"><b>เราเลือก AgiBot</b> เพราะเปิดทั้งระบบ — คณาจารย์และนักศึกษาเข้าถึงได้ตั้งแต่<b>ข้อมูล โมเดล AI การจำลอง จนถึง SDK ของหุ่นจริง</b> ตรงกับเป้าหมาย “สร้างสมอง ไม่สร้างมือกล”</div>
-    <div class="note a-fade" style="--d:1100ms;font-size:10.5px;text-align:right">ข้อมูลจากเว็บไซต์และ GitHub ของผู้ผลิต ณ พ.ย. ๒๕๖๙: OpenDriveLab/AgiBot-World · AgibotTech/genie_sim · x2-aimdk.agibot.com · github.com/unitreerobotics · เอกสาร SDK Walker S2 (UBTECH)</div>
+    <div class="cmp a-rise" style="--d:200ms"><div class="cmp-h cmp-0">ทั้ง ๓ รายมี SDK<br>จุดที่ต่างกัน ↓</div><div class="cmp-h">Unitree<span>เด่น: เดินคล่อง · มีโมเดล AI เปิด</span></div><div class="cmp-h pick">AgiBot<span>X2 Ultra · D1 Edu</span><em>เราเลือก</em></div><div class="cmp-h">UBTECH<span>เด่น: หุ่นยนต์งานโรงงาน</span></div><div class="cmp-k">ข้อมูลจริงสำหรับฝึก AI</div><div class="cmp-c"><i class="ck mid">◐</i>หลายชุดย่อย ชุดละหลักร้อย–พันตัวอย่าง</div><div class="cmp-c pick"><i class="ck ok">✓</i>AgiBot World กว่า 1 ล้านตัวอย่าง จากหุ่นจริง 100 ตัว</div><div class="cmp-c"><i class="ck no">–</i>ไม่พบแบบเปิด</div><div class="cmp-k">ฉากชีวิตประจำวัน ใกล้งานดูแล</div><div class="cmp-c"><i class="ck mid">◐</i>ส่วนใหญ่งานบนโต๊ะ และงานประกอบชิ้นส่วน</div><div class="cmp-c pick"><i class="ck ok">✓</i>ฉากจริง 100+ ฉาก: บ้าน ร้านค้า ร้านอาหาร สำนักงาน</div><div class="cmp-c"><i class="ck no">–</i>เน้นงานโรงงาน</div><div class="cmp-k">การจำลองที่สร้างข้อมูลฝึกได้</div><div class="cmp-c"><i class="ck mid">◐</i>สภาพแวดล้อมฝึกการเดินและควบคุม</div><div class="cmp-c pick"><i class="ck ok">✓</i>Genie Sim 3.0: ข้อมูลสังเคราะห์ 10,000+ ชม. · ชุดทดสอบ 200+ งาน</div><div class="cmp-c"><i class="ck no">–</i>ไม่พบแบบเปิด</div><div class="cmp-k">SDK ในรุ่นที่เราขอ</div><div class="cmp-c"><i class="ck mid">◐</i>ต้องเป็นรุ่น EDU จึงพัฒนาต่อยอดได้</div><div class="cmp-c pick"><i class="ck ok">✓</i>เปิดทั้ง ๒ รุ่น · Python · C++ · ROS 2</div><div class="cmp-c"><i class="ck mid">◐</i>เอกสาร SDK เน้นงานโรงงาน</div><div class="cmp-k">อบรมและหลักสูตรต่อยอดในไทย</div><div class="cmp-c"><i class="ck mid">◐</i>ตัวแทนหลายราย ขอบเขตอบรมต่างกัน</div><div class="cmp-c pick"><i class="ck ok">✓</i>อบรม ณ สถานที่ + หลักสูตรพัฒนาต่อยอด อยู่ในข้อเสนอแล้ว</div><div class="cmp-c"><i class="ck no">–</i>สั่งพิเศษผ่านพันธมิตร ไม่พบหลักสูตร</div></div>
+    <div class="why3 a-rise" style="--d:900ms"><b>เราเลือก AgiBot</b> เพราะเหนือกว่าครบทั้ง ๕ ข้อที่ตรงกับโจทย์ “สร้างสมอง ไม่สร้างมือกล” — <b>ข้อมูลจริงขนาดใหญ่จากฉากชีวิตประจำวัน การจำลองที่สร้างข้อมูลฝึกได้ และหลักสูตรอบรมในไทย</b> · ส่วน Unitree เหมาะกับงานวิจัยการเดิน และ UBTECH เหมาะกับงานโรงงาน</div>
+    <div class="note a-fade" style="--d:1100ms;font-size:10.5px;text-align:right">ข้อมูลจากเว็บไซต์และ GitHub ของผู้ผลิต ณ พ.ย. ๒๕๖๙: OpenDriveLab/AgiBot-World · AgibotTech/genie_sim · x2-aimdk.agibot.com · github.com/unitreerobotics · huggingface.co/unitreerobotics · เอกสาร SDK Walker S2 (UBTECH) · ข้อมูล AgiBot World ใช้เพื่อการศึกษาและวิจัย (CC BY-NC-SA 4.0)</div>
   </div>
   <div class="bridge">ถัดไป → <b>สิ่งที่เราขอ</b></div>
   <div class="pg">08</div>
