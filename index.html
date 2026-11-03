@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="deck-version" content="2026-11-03.8">
+<meta name="deck-version" content="2026-11-03.9">
 <meta name="description" content="ARIC Care Robot Concept — แนวคิดหุ่นยนต์เพื่อการรักษาและสุขภาวะ: สร้างสมองที่เข้าใจการดูแลคนไทย มหาวิทยาลัยแม่ฟ้าหลวง">
 <link rel="icon" type="image/svg+xml" href="aric_logo_mark.svg?v=d">
 <title>ARIC Care Robot Concept — หุ่นยนต์เพื่อการรักษาและสุขภาวะ</title>
@@ -485,10 +485,15 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 .loop .st .d{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--mono);flex:none}
 .loop .ar{margin-left:16px;width:2px;height:16px;background:var(--tan)}
 /* ---------- the ask (Embodied Intelligence Upskilling) ---------- */
-.bots{flex:0 0 430px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bots{flex:0 0 430px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.bots .bg2{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.brand2{font-size:14px;color:var(--mute)}
+.brand2 b{font:700 17px var(--mono);color:var(--ink);letter-spacing:.02em;margin-left:4px}
+.bot2 .mdl{font:600 19px var(--mono);color:var(--red);margin-top:8px;letter-spacing:-.01em}
+.bot2 .mdl em{font-style:normal;color:var(--ink)}
 .bot2{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:10px 12px 12px;display:flex;flex-direction:column}
 .bot2 .ph2{flex:1;min-height:0;background:#fff center/contain no-repeat}
-.bot2 b{font-size:17px;font-weight:600;margin-top:6px}
+.bot2 b{font-size:15.5px;font-weight:600;margin-top:2px}
 .bot2 span{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.45;margin-top:2px}
 .gets4{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
 .get{display:flex;gap:10px}
@@ -829,7 +834,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
   </div>
   <div class="body" style="flex-direction:column;gap:14px">
     <div style="display:flex;gap:26px;flex:1;min-height:0">
-      <div class="bots"><div class="bot2 a-rise" style="--d:200ms"><div class="ph2" style="background-image:url(robot_humanoid.jpg)"></div><b>หุ่นยนต์ฮิวแมนนอยด์</b><span>เดิน หยิบจับ และสื่อสารกับคน · งานบริการและสุขภาพ</span></div><div class="bot2 a-rise" style="--d:350ms"><div class="ph2" style="background-image:url(robot_quadruped.jpg)"></div><b>หุ่นยนต์สี่ขา</b><span>เคลื่อนที่ รับรู้ และนำทาง · ชั้นเรียนและงานตรวจตรา</span></div></div>
+      <div class="bots"><div class="brand2 a-fade" style="--d:150ms">แพลตฟอร์มหุ่นยนต์จาก <b>AgiBot</b></div><div class="bg2"><div class="bot2 a-rise" style="--d:200ms"><div class="ph2" style="background-image:url(robot_humanoid.jpg)"></div><div class="mdl"><em>AgiBot</em> X2 Ultra</div><b>หุ่นยนต์ฮิวแมนนอยด์</b><span>เดิน หยิบจับ และสื่อสารกับคน · งานบริการและสุขภาพ</span></div><div class="bot2 a-rise" style="--d:350ms"><div class="ph2" style="background-image:url(robot_quadruped.jpg)"></div><div class="mdl"><em>AgiBot</em> D1 Edu</div><b>หุ่นยนต์สี่ขา</b><span>เคลื่อนที่ รับรู้ และนำทาง · ชั้นเรียนและงานตรวจตรา</span></div></div></div>
       <div style="flex:1;min-width:0;display:flex;flex-direction:column">
         <div class="skills a-rise" style="--d:500ms"><div class="k">หลังการอบรม คณาจารย์จะทำได้</div><div class="k2">ระดับพัฒนาต่อยอดและวิจัย · หุ่นยนต์ฮิวแมนนอยด์</div><div class="g"><div><i>✓</i><p><b>สอนและฝึก ROS 2</b><span>การควบคุมการเคลื่อนที่ การรับรู้ และการนำทาง</span></p></div><div><i>✓</i><p><b>พัฒนาต่อยอดผ่าน SDK</b><span>ข้อต่อ มือจับ และการควบคุมการเคลื่อนที่</span></p></div><div><i>✓</i><p><b>ออกแบบรายวิชาใหม่ได้เอง</b><span>จากกรอบหลักสูตรการรับรู้ของหุ่นยนต์ฮิวแมนนอยด์</span></p></div><div><i>✓</i><p><b>ต่อยอดสู่งานจริง</b><span>งานวิจัย การแข่งขัน และโครงการนวัตกรรม</span></p></div></div></div>
         <div style="font-size:16px;font-weight:600;margin:12px 0 4px">สิ่งที่เราจะได้</div>
