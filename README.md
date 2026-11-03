@@ -1,7 +1,7 @@
 # ARIC Care Robot Concept
 
 Thai concept deck: robots for healthcare and wellness, built around a "brain" that understands Thai care.
-9 slides: why · brain, not hands · the brain for care · one brain, many bodies · use cases from hospital to home ·
+9 slides: why · brain, not hands · the brain for care · one brain, many bodies · real hospital robots today ·
 the real problems at MFU · design principles · Q&A.
 
 Live: https://cnacha-mfu.github.io/robot-concept-deck/ (arrow keys / swipe; G for the overview).

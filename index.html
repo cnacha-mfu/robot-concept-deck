@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="deck-version" content="2026-11-03.2">
+<meta name="deck-version" content="2026-11-03.3">
 <meta name="description" content="ARIC Care Robot Concept — แนวคิดหุ่นยนต์เพื่อการรักษาและสุขภาวะ: สร้างสมองที่เข้าใจการดูแลคนไทย มหาวิทยาลัยแม่ฟ้าหลวง">
 <link rel="icon" type="image/svg+xml" href="aric_logo_mark.svg?v=d">
 <title>ARIC Care Robot Concept — หุ่นยนต์เพื่อการรักษาและสุขภาวะ</title>
@@ -467,16 +467,13 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 .cont{display:flex;align-items:center;gap:10px;font-size:14px}
 .cont .st{display:flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--rule)}
 .cont .st i{width:9px;height:9px;border-radius:50%;display:block}
-/* ---------- use cases: real hospital frames ---------- */
-.ucs .uc .pic{height:142px}
-.ucs .uc .what{font-size:14px;margin-top:3px}
-.ucs .uc .bd{padding:10px 14px 11px}
-.real{display:flex;gap:12px;align-items:stretch}
-.real .lab{flex:0 0 132px;display:flex;flex-direction:column;justify-content:center}
-.real .lab b{font-size:16px;font-weight:600;line-height:1.3;color:var(--red)}
-.real .lab span{font-size:12px;color:var(--mute);margin-top:4px;line-height:1.4}
-.rf{flex:1;min-width:0;height:128px;border-radius:6px;background:#2A0B0B center/cover no-repeat;position:relative;overflow:hidden}
-.rf span{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 7px;font-size:13px;font-weight:500;color:#FFF6E6;background:linear-gradient(0deg,rgba(20,6,6,.86),rgba(20,6,6,0))}
+/* ---------- real hospitals today: 2 x 2 stills ---------- */
+.rgrid{display:grid;grid-template-columns:repeat(2,410px);grid-template-rows:repeat(2,231px);gap:16px}
+.rt{margin:0;border-radius:8px;background:#2A0B0B center/cover no-repeat;position:relative;overflow:hidden;box-shadow:0 14px 30px -18px rgba(40,10,10,.55)}
+.rt .n{position:absolute;left:12px;top:10px;font:600 15px var(--mono);color:#FFF6E6;background:var(--red);width:28px;height:28px;border-radius:50%;display:grid;place-items:center}
+.rt figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;background:linear-gradient(0deg,rgba(20,6,6,.9),rgba(20,6,6,0))}
+.rt figcaption b{display:block;font-size:17px;font-weight:600;color:#FFF6E6}
+.rt figcaption span{display:block;font-size:13px;font-weight:300;color:rgba(255,240,210,.82);margin-top:1px}
 /* ---------- principles ---------- */
 .pr{display:flex;gap:16px;padding:13px 0;border-top:1px solid var(--rule2)}
 .pr:first-of-type{border-top:0}
@@ -751,22 +748,21 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
     <div class="body4"><div class="bd4 a-rise" style="--d:900ms"><div class="pic" style="background-image:url(body_1.jpg);background-position:50% 8%"></div><h3>หุ่นยนต์ฮิวแมนนอยด์</h3><div class="job">งานที่ต้องใช้มือและเดินในพื้นที่ของคน: ส่งของถึงเตียง พยุงลุก สาธิตท่ากายภาพ</div><div class="at">หอผู้ป่วย · ศูนย์ฟื้นฟู</div></div><div class="bd4 a-rise" style="--d:1050ms"><div class="pic" style="background-image:url(body_2.jpg);background-position:50% 62%"></div><h3>หุ่นยนต์สี่ขา</h3><div class="job">เดินตรวจทางเดินและห้องพัก มองหาการล้มหรือสิ่งผิดปกติ ทั้งกลางวันและกลางคืน</div><div class="at">สถานดูแลผู้สูงอายุ · เวรดึก</div></div><div class="bd4 a-rise" style="--d:1200ms"><div class="pic" style="background-image:url(body_3.jpg);background-position:50% 55%"></div><h3>หุ่นยนต์ขนส่ง</h3><div class="job">รับ–ส่งยา เวชภัณฑ์ และตัวอย่างตรวจ ระหว่างแผนก ใช้ลิฟต์เองได้ ลดเวลาเดินของพยาบาล</div><div class="at">งานหลังบ้านของโรงพยาบาล</div></div><div class="bd4 a-rise" style="--d:1350ms"><div class="pic" style="background-image:url(body_4.jpg);background-position:50% 22%"></div><h3>หุ่นยนต์เพื่อนคุย</h3><div class="job">คุยด้วยภาษาไทยและภาษาถิ่นผ่านเสียงและจอ เตือนยา ถามอาการ แล้วสรุปส่งพยาบาลหรือญาติ</div><div class="at">ข้างเตียง · บ้าน · คลินิก NCD</div></div></div>
     <div class="note a-fade" style="--d:1600ms;font-size:11px;margin-top:6px;text-align:right">ภาพจริงจาก Wikimedia Commons: ① Sayanesy (CC0) · ② Jonte (CC BY-SA 4.0) · ③ Mikael Häggström (CC0) · ④ Beat Mattmann, Nadja Meyenhofer (CC0)</div>
   </div>
-  <div class="bridge">ถัดไป → <b>ตัวอย่างงานจากโรงพยาบาลถึงบ้าน</b></div>
+  <div class="bridge">ถัดไป → <b>หุ่นยนต์ในโรงพยาบาลจริงวันนี้</b></div>
   <div class="pg">05</div>
 </section>
 
 
-<!-- ═══════════ 6 · USE CASES ═══════════ -->
-<section class="s" data-cap="ตัวอย่างงาน · Use cases">
+<!-- ═══════════ 6 · REAL HOSPITALS TODAY ═══════════ -->
+<section class="s" data-cap="หุ่นยนต์ในโรงพยาบาลจริง">
   <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
   <div class="head">
-    <h1 class="t">จากโรงพยาบาลถึงบ้าน — <span class="red">ตัวอย่างงาน ๔ แบบ</span></h1>
-    <div class="sub">สมองชุดเดียวกันรองรับ<b>ทุกช่วงของการดูแล</b> ตั้งแต่การรักษาในโรงพยาบาล จนถึงการส่งเสริมสุขภาวะในชุมชน</div>
+    <h1 class="t">เกิดขึ้นแล้ว — <span class="red">หุ่นยนต์ในโรงพยาบาลจริง</span></h1>
+    <div class="sub">ภาพจากโรงพยาบาลและห้องปฏิบัติการในต่างประเทศ: หุ่นยนต์เริ่ม<b>ทำงานข้างพยาบาลและแพทย์</b>แล้ว</div>
   </div>
-  <div class="body ucs" style="flex-direction:column;gap:12px">
-    <div style="display:flex;gap:14px;flex:1;min-height:0"><div class="uc a-rise" style="--d:150ms"><div class="pic" style="background-image:url(uc_ward.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">1</span></div><div class="bd"><h3>ผู้ช่วยพยาบาลในหอผู้ป่วย</h3><div class="what">รับ–ส่งยาและเวชภัณฑ์ระหว่างเคาน์เตอร์พยาบาลกับเตียง เดินในหอและหลบคนอย่างปลอดภัย</div><div class="who">ผู้ได้ประโยชน์: พยาบาลหอผู้ป่วย</div><div class="set">รักษา · โรงพยาบาล</div></div></div><div class="uc a-rise" style="--d:300ms"><div class="pic" style="background-image:url(uc_talk.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">2</span></div><div class="bd"><h3>เพื่อนคุยภาษาเหนือ เตือนกินยา</h3><div class="what">คุยกับผู้สูงอายุด้วยภาษาเหนือ เตือนยาตามเวลา สังเกตอาการ แล้วสรุปส่งพยาบาลหรือญาติ</div><div class="who">ผู้ได้ประโยชน์: ผู้สูงอายุ · ผู้ป่วยกลุ่มเสี่ยง NCD</div><div class="set">ป้องกัน · คลินิกและบ้าน</div></div></div><div class="uc a-rise" style="--d:450ms"><div class="pic" style="background-image:url(uc_night.jpg)"><span class="pk">หุ่นยนต์สี่ขา</span><span class="no">3</span></div><div class="bd"><h3>เวรดึก ตรวจจับการล้ม</h3><div class="what">เดินตรวจทางเดินและห้องพัก เห็นการล้มหรือการลุกออกจากเตียง แล้วแจ้งพยาบาลทันที</div><div class="who">ผู้ได้ประโยชน์: สถานดูแลผู้สูงอายุ</div><div class="set">ดูแลระยะยาว · สถานดูแล</div></div></div><div class="uc a-rise" style="--d:600ms"><div class="pic" style="background-image:url(uc_coach.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">4</span></div><div class="bd"><h3>โค้ชออกกำลังผู้สูงวัย</h3><div class="what">สาธิตท่าออกกำลังและกายภาพ นับจำนวนครั้ง ดูท่าทางผ่านกล้อง และปรับระดับให้เหมาะกับแต่ละคน</div><div class="who">ผู้ได้ประโยชน์: ผู้สูงอายุในชุมชน · ผู้ป่วยระยะฟื้นฟู</div><div class="set">สุขภาวะ · ชุมชน</div></div></div></div>
-    <div class="real"><div class="lab a-fade" style="--d:900ms"><b>เกิดขึ้นแล้ว<br>ในโรงพยาบาลจริง</b><span>ภาพจากโรงพยาบาลและห้องปฏิบัติการในต่างประเทศ</span></div><div class="rf a-rise" style="background-image:url(rw_1.jpg);background-position:50% 50%;--d:1000ms"><span>เข็นรถเข็นผู้ป่วยในห้องพัก</span></div><div class="rf a-rise" style="background-image:url(rw_2.jpg);background-position:50% 60%;--d:1120ms"><span>จัดของบนโต๊ะข้างเตียง</span></div><div class="rf a-rise" style="background-image:url(rw_3.jpg);background-position:50% 40%;--d:1240ms"><span>ผู้ช่วยข้างเตียงในห้องผ่าตัด</span></div><div class="rf a-rise" style="background-image:url(rw_4.jpg);background-position:50% 30%;--d:1360ms"><span>ฝึกใส่ท่อช่วยหายใจกับหุ่นจำลอง</span></div></div>
-    <div class="note a-fade" style="--d:1500ms;display:flex;justify-content:space-between;font-size:11px;margin-top:-6px"><span>แถวบน: ภาพหุ่นยนต์จริงบนฉากจำลองที่สร้างด้วย AI (แนวคิด)</span><span>แถวล่าง: ภาพจากวิดีโอ YouTube — Perigee Tech · CNET “What The Future” (UC San Diego)</span></div>
+  <div class="body" style="flex-direction:column;align-items:center;justify-content:center;gap:8px">
+    <div class="rgrid"><figure class="rt a-rise" style="background-image:url(rw_1.jpg);background-position:50% 55%;--d:200ms"><span class="n">1</span><figcaption><b>เข็นรถเข็นผู้ป่วย</b><span>ฮิวแมนนอยด์ทำงานในห้องพักผู้ป่วย</span></figcaption></figure><figure class="rt a-rise" style="background-image:url(rw_2.jpg);background-position:50% 60%;--d:350ms"><span class="n">2</span><figcaption><b>จัดของบนโต๊ะข้างเตียง</b><span>เตรียมห้องและอุปกรณ์ให้ผู้ป่วย</span></figcaption></figure><figure class="rt a-rise" style="background-image:url(rw_3.jpg);background-position:50% 40%;--d:500ms"><span class="n">3</span><figcaption><b>ผู้ช่วยข้างเตียงในห้องผ่าตัด</b><span>ทำงานร่วมกับทีมแพทย์ในห้องปฏิบัติการ</span></figcaption></figure><figure class="rt a-rise" style="background-image:url(rw_4.jpg);background-position:50% 35%;--d:650ms"><span class="n">4</span><figcaption><b>ฝึกใส่ท่อช่วยหายใจ</b><span>ฝึกหัตถการกับหุ่นจำลองก่อนใช้กับคนจริง</span></figcaption></figure></div>
+    <div class="note a-fade" style="--d:1000ms;font-size:11px;width:836px;text-align:right">ภาพจากวิดีโอ YouTube — ① ② Perigee Tech · ③ ④ CNET “What The Future” (UC San Diego)</div>
   </div>
   <div class="bridge">ถัดไป → <b>โจทย์จริงและคนที่ใช่</b></div>
   <div class="pg">06</div>
