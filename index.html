@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="deck-version" content="2026-11-03.1">
+<meta name="description" content="ARIC Care Robot Concept — แนวคิดหุ่นยนต์เพื่อการรักษาและสุขภาวะ: สร้างสมองที่เข้าใจการดูแลคนไทย มหาวิทยาลัยแม่ฟ้าหลวง">
+<link rel="icon" type="image/svg+xml" href="aric_logo_mark.svg?v=d">
+<title>ARIC Care Robot Concept — หุ่นยนต์เพื่อการรักษาและสุขภาวะ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#1C1610; --ink2:#4A3F33; --mute:#6A5B4C;
+  --red:#7A1C1C; --red-d:#500000; --red-m:#93433F; --red-l:#C8102E;
+  --cream:#FAF6EE; --cream2:#F3ECE0; --hi:#FFF0D2;
+  --rule:#D6C9B3; --rule2:#EBE2D1;
+  --gold:#A87A2C; --gold2:#8E6420; --sun:#E4B04A; --tan:#C9A87A;
+  --blue:#2E5F7A;
+  --sans:'Prompt',"Leelawadee UI",Tahoma,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#241E18;color:var(--ink);font-family:var(--sans);font-size:14px}
+::selection{background:var(--sun);color:var(--ink)}
+img{max-width:100%}
+
+/* ---------- deck shell ---------- */
+#viewport{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#stage{width:1280px;height:720px;flex:0 0 auto;transform-origin:center center;position:relative}
+.s{position:absolute;inset:0;background:var(--cream);padding:44px 60px 40px;display:none;flex-direction:column;overflow:hidden}
+.s.on{display:flex}
+.s::after{content:'';position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--red) 0 62%,var(--gold) 62% 100%)}
+.pg{position:absolute;right:24px;bottom:16px;font-family:var(--mono);font-size:12px;color:var(--mute)}
+
+#bar{position:fixed;left:50%;bottom:13px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;
+  background:rgba(28,22,16,.82);border:1px solid rgba(214,201,179,.25);border-radius:999px;padding:7px 14px;z-index:50;backdrop-filter:blur(6px)}
+#bar button{background:none;border:0;color:var(--cream2);font-family:var(--mono);font-size:14px;cursor:pointer;padding:3px 8px;border-radius:6px;line-height:1}
+#bar button:hover{background:rgba(250,246,238,.13)}
+#bar button:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+#dots{display:flex;gap:5px}
+#dots i{width:7px;height:7px;border-radius:50%;background:rgba(250,246,238,.3);cursor:pointer;transition:background .15s,transform .15s}
+#dots i.on{background:var(--sun);transform:scale(1.3)}
+#cnt{font-family:var(--mono);font-size:12px;color:var(--tan);min-width:46px;text-align:center}
+#ver{font-family:var(--mono);font-size:10px;color:rgba(201,168,122,.55)}
+
+#grid{display:none;padding:32px;gap:20px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));max-width:1500px;margin:0 auto}
+body.overview #viewport{display:none}
+body.overview #grid{display:grid}
+.thumb{position:relative;aspect-ratio:16/9;border-radius:4px;overflow:hidden;cursor:pointer;border:1px solid rgba(214,201,179,.22);background:var(--cream)}
+.thumb:hover{border-color:var(--sun)}
+.thumb .cap{position:absolute;left:0;right:0;bottom:0;background:rgba(28,22,16,.86);color:var(--cream2);font-size:12px;padding:6px 9px;display:flex;gap:8px}
+.thumb .cap b{font-family:var(--mono);color:var(--sun);font-weight:500}
+.thumb .inner{position:absolute;top:0;left:0;width:1280px;height:720px;transform-origin:top left;pointer-events:none}
+
+/* ---------- type ---------- */
+h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1.18;text-wrap:balance}
+.sub{font-size:17px;color:var(--mute);font-weight:300;margin-top:6px;line-height:1.45}
+.sub b{color:var(--ink);font-weight:500}
+.head{padding-bottom:16px;margin-bottom:22px;border-bottom:1px solid var(--rule);flex:0 0 auto}
+.body{flex:1 1 auto;min-height:0;display:flex}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:-.02em;line-height:1}
+.lbl{font-size:13px;color:var(--mute);font-weight:400}
+.txt{font-size:15px;font-weight:300;color:var(--ink2);line-height:1.5}
+.txt b{color:var(--ink);font-weight:500}
+.note{font-size:13px;color:var(--mute);font-weight:300;line-height:1.5}
+.note b{color:var(--ink);font-weight:500}
+.red{color:var(--red)}
+.chip{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:3px;background:rgba(122,28,28,.09);color:var(--red);font-weight:500;white-space:nowrap;vertical-align:2px}
+.chip.g{background:var(--hi);color:var(--gold2)}
+
+/* ---------- motion ----------
+   Content is fully visible by default (thumbnails, print, failed script).
+   .play is added when a slide is shown; animations run from that moment. */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes wipeUp{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes focusIn{from{opacity:0;filter:blur(10px);transform:scale(.96)}to{opacity:1;filter:none;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes dash{from{stroke-dasharray:0 2000;opacity:0}4%{opacity:1}to{stroke-dasharray:var(--L) 2000}}
+.s.play .a-rise{animation:rise .7s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-slide{animation:slideIn .7s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-fade{animation:fade .6s ease both;animation-delay:var(--d,0ms)}
+.s.play .a-growY{transform-origin:bottom;animation:growY .9s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-growX{transform-origin:left;animation:growX .9s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-drop{transform-origin:top;animation:growY .45s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-wipe{animation:wipe .9s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-wipeUp{animation:wipeUp .9s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-focus{animation:focusIn .8s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-pop{animation:pop .5s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .a-dash{animation:dash 1s var(--ease) both;animation-delay:var(--d,0ms)}
+
+/* ---------- 1 · cover ---------- */
+.mark .ridge path{stroke-dasharray:var(--L) 2000}
+.s.play .mark .range{transform-box:view-box;transform-origin:256px 400px;animation:growY 1.3s var(--ease) both;animation-delay:200ms}
+.s.play .mark .ridge path{animation:dash 1.2s var(--ease) both;animation-delay:calc(1000ms + 2 * var(--d,0ms))}
+.s.play .mark .node{transform-box:fill-box;transform-origin:center;animation:pop .5s var(--ease) both;animation-delay:1900ms}
+.s.play .mark g:nth-of-type(3) .node:nth-child(2),.s.play .mark g:nth-of-type(4) .node:nth-child(2){animation-delay:2050ms}
+.s.play .mark g:nth-of-type(3) .node:nth-child(3),.s.play .mark g:nth-of-type(4) .node:nth-child(3){animation-delay:2200ms}
+.s.play .mark .sun{transform-box:fill-box;transform-origin:center;animation:focusIn 1.2s var(--ease) both;animation-delay:700ms}
+.stat{flex:1;padding-left:22px;border-left:1px solid var(--rule)}
+.stat:first-child{padding-left:0;border-left:0}
+
+
+/* ---------- photo slides (cover + vision) ---------- */
+.s.cover{background:#2A0B0B;color:var(--cream)}
+.s.cover .lbl{color:rgba(250,246,238,.72)}
+.s.cover .stat{border-left-color:rgba(250,246,238,.22)}
+.s .bg{position:absolute;inset:-2%;background:url(cover.jpg) 70% 55%/cover no-repeat}
+.s .shade{position:absolute;inset:0}
+.s.cover .shade{background:
+  linear-gradient(90deg,rgba(24,6,6,.93) 0%,rgba(38,9,9,.80) 36%,rgba(38,9,9,.30) 62%,rgba(38,9,9,0) 82%),
+  linear-gradient(0deg,rgba(20,5,5,.88) 0%,rgba(20,5,5,0) 32%)}
+.s.cover .content{position:relative;z-index:1;display:flex;flex-direction:column;height:100%}
+.s.cover .pg{color:rgba(250,246,238,.5)}
+.s.cover .flow{display:flex;align-items:center;gap:12px;margin-top:16px}
+.s.cover .step{display:inline-flex;align-items:baseline;gap:9px;padding:7px 16px 8px;border:1px solid rgba(242,196,106,.4);border-radius:999px;background:rgba(24,6,6,.35)}
+.s.cover .step i{width:9px;height:9px;border-radius:50%;align-self:center}
+.s.cover .step b{font-size:19px;font-weight:600;color:#FFF6E6;letter-spacing:.01em}
+.s.cover .step span{font-size:15px;font-weight:300;color:rgba(250,246,238,.82)}
+.s.vision .bg{filter:saturate(.75) brightness(.42)}
+.s.vision .shade{background:radial-gradient(120% 95% at 78% 50%,rgba(74,20,20,.35) 0%,rgba(42,11,11,.80) 55%,rgba(24,7,7,.94) 100%)}
+@keyframes kenburns{from{transform:scale(1.16) translate(1.5%,1%)}to{transform:scale(1)}}
+.s.play .bg{animation:kenburns 11s cubic-bezier(.2,.6,.2,1) both}
+
+/* logo build — slower so the room can follow it */
+.mark .spark path{fill:none;stroke:#FFF6DC;stroke-width:7;stroke-linecap:round;opacity:0}
+@keyframes spark{0%{stroke-dasharray:22 2000;stroke-dashoffset:22;opacity:0}12%{opacity:1}88%{opacity:1}100%{stroke-dasharray:22 2000;stroke-dashoffset:calc(-1px * var(--L));opacity:0}}
+.s.play .mark .spark path{animation:spark 1.8s linear infinite;animation-delay:calc(2800ms + var(--d,0ms))}
+
+/* Concept — advisors' endorsement card (links to the council report) */
+.advisors{margin-top:auto;display:flex;gap:18px;align-items:center;padding:11px 18px;border-left:3px solid var(--red);
+  background:rgba(122,28,28,.05);border-radius:0 6px 6px 0;text-decoration:none;color:inherit}
+.advisors:hover{background:rgba(122,28,28,.09)}
+.advisors:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+.adv-k{font-size:13px;color:var(--mute);line-height:1.35;white-space:nowrap}
+.adv-k b{color:var(--red);font-weight:600;font-size:15px}
+.adv-q{font-size:17px;color:var(--ink);line-height:1.4;white-space:nowrap}
+.adv-q b{color:var(--red);font-weight:600}
+.adv-n{font-size:12px;color:var(--mute);margin-top:2px;white-space:nowrap}
+.adv-l{display:inline-block;margin-top:3px;color:var(--red);font-weight:500;font-size:12.5px;white-space:nowrap}
+
+/* Q&A — film panel (plays muted on loop while the slide is up) */
+.film{flex:1;margin:0;display:flex;flex-direction:column;gap:10px}
+.film video{width:100%;aspect-ratio:16/9;border-radius:10px;background:#1a0608;display:block;
+  box-shadow:0 18px 40px rgba(60,10,10,.28),0 2px 6px rgba(60,10,10,.18)}
+.film figcaption{display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--ink2)}
+.filmBtns{display:flex;gap:10px}
+.filmBtns button,.filmBtns a{font:500 14px var(--sans);padding:6px 14px;border-radius:999px;border:1px solid var(--rule);
+  background:#fff;color:var(--red);cursor:pointer;text-decoration:none}
+.filmBtns button:hover,.filmBtns a:hover{border-color:var(--red)}
+.filmBtns button:focus-visible,.filmBtns a:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+.filmBtns button[aria-pressed="true"]{background:var(--red);color:#fff;border-color:var(--red)}
+
+/* Q&A — the mark rebuilds itself on an 8 s loop while the slide is up */
+@keyframes qRange{0%{transform:scaleY(0);opacity:1}14%{transform:scaleY(1)}86%{transform:scaleY(1);opacity:1}95%,100%{transform:scaleY(1);opacity:0}}
+@keyframes qSun{0%,10%{opacity:0;transform:scale(.6)}22%{opacity:1;transform:none}86%{opacity:1}95%,100%{opacity:0}}
+@keyframes qDraw{0%,16%{stroke-dasharray:0 2000;opacity:0}17%{opacity:1}36%{stroke-dasharray:var(--L) 2000}86%{stroke-dasharray:var(--L) 2000;opacity:1}95%,100%{stroke-dasharray:var(--L) 2000;opacity:0}}
+@keyframes qNode{0%,36%{opacity:0;transform:scale(.6)}42%{opacity:1;transform:scale(1.1)}46%{transform:scale(1)}86%{opacity:1;transform:scale(1)}95%,100%{opacity:0}}
+@keyframes qSpark{0%,48%{stroke-dasharray:22 2000;stroke-dashoffset:22;opacity:0}50%{opacity:1}64%{stroke-dashoffset:calc(-1px * var(--L));opacity:1}65%,67%{stroke-dashoffset:calc(-1px * var(--L));opacity:0}68%{stroke-dashoffset:22;opacity:0}70%{opacity:1}83%{stroke-dashoffset:calc(-1px * var(--L));opacity:1}84%,100%{stroke-dashoffset:calc(-1px * var(--L));opacity:0}}
+.s.qa.play .mark .range{animation:qRange 8s var(--ease) infinite;animation-delay:0ms}
+.s.qa.play .mark .sun{animation:qSun 8s var(--ease) infinite;animation-delay:0ms}
+.s.qa.play .mark .ridge path{animation:qDraw 8s var(--ease) infinite;animation-delay:calc(2 * var(--d,0ms))}
+.s.qa.play .mark g .node:nth-child(n){animation:qNode 8s var(--ease) infinite;animation-delay:0ms}
+.s.qa.play .mark g .node:nth-child(2){animation-delay:120ms}
+.s.qa.play .mark g .node:nth-child(3){animation-delay:240ms}
+.s.qa.play .mark .spark path{animation:qSpark 8s linear infinite;animation-delay:calc(var(--d,0ms) / 4)}
+
+/* ---------- 2 · why (Golden Circle) ---------- */
+.why .lead{font-size:26px;font-weight:300;color:var(--mute);line-height:1.3}
+.why h1{font-size:60px;font-weight:600;line-height:1.24;margin:4px 0 0;letter-spacing:-.01em;text-wrap:balance}
+.why .rows{margin-top:30px}
+.why .row{display:flex;gap:18px;align-items:baseline;padding:12px 0;border-top:1px solid var(--rule)}
+.why .row .k{font-size:20px;font-weight:600;width:84px;flex:none}
+.why .row .v{font-size:18.5px;font-weight:300;line-height:1.5;color:var(--ink2)}
+.why .row .v b{font-weight:500;color:var(--ink)}
+.gc .disc{transform-box:view-box;transform-origin:180px 260px}
+.gc .lead-line{fill:none;stroke:#4A3F33;stroke-width:1.5;stroke-linecap:round}
+.gc .pin{fill:#FAF6EE;stroke:#4A3F33;stroke-width:2;transform-box:fill-box;transform-origin:center}
+.gc .glow{fill:none;stroke:#E4B04A;stroke-width:3;opacity:0}
+@keyframes core{0%{transform:scale(0);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:none;opacity:1}}
+@keyframes ringOut{from{transform:scale(var(--s0));opacity:0}to{transform:none;opacity:1}}
+@keyframes glow{0%{r:58;opacity:.7}100%{r:168;opacity:0}}
+.s.play .gc .core{animation:core .8s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .gc .ring2{animation:ringOut 1s var(--ease) both;animation-delay:var(--d,0ms)}
+.s.play .gc .glow{animation:glow 3s ease-out 3s infinite}
+@media (prefers-reduced-motion:reduce){
+  .s.play .gc .core,.s.play .gc .ring2{animation:fade .3s ease both !important}
+  .s.play .gc .glow{animation:none !important}
+}
+
+/* ---------- 3 · concept stack ---------- */
+.layer{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:3px}
+.layer .L{font-family:var(--mono);font-size:18px;font-weight:600;width:34px}
+.layer .nm{font-size:17px;font-weight:500}
+.layer .ex{font-size:13px;opacity:.8;margin-top:1px}
+.layer.on1{background:var(--red);color:var(--hi)}
+.layer.on2{background:var(--red-m);color:var(--hi)}
+.layer.off{background:var(--cream2);color:var(--ink2);border:1px solid var(--rule)}
+.layer.off .L{color:var(--mute)}
+
+/* concept slide — robot arm: hardware grey, brain red; signals flow brain -> joints */
+.arm .link{fill:none;stroke:#B9A88E;stroke-linecap:round}
+.arm .joint{fill:#FAF6EE;stroke:#9C8C74;stroke-width:4;transform-box:fill-box;transform-origin:center}
+.arm .wire{fill:none;stroke:#C9A87A;stroke-width:1.5;stroke-dasharray:3 5}
+.arm .sig{fill:none;stroke:#C8102E;stroke-width:4;stroke-linecap:round;opacity:0;stroke-dasharray:18 2000}
+.arm .flash{fill:none;stroke:#C8102E;stroke-width:3;opacity:0}
+.arm .grip{transform-box:view-box;transform-origin:150px 168px}
+.arm .chip{transform-box:fill-box;transform-origin:center}
+@keyframes sig{0%{stroke-dasharray:18 2000;stroke-dashoffset:18;opacity:0}8%{opacity:1}55%{stroke-dashoffset:calc(-1px * var(--L));opacity:1}60%,100%{stroke-dashoffset:calc(-1px * var(--L));opacity:0}}
+@keyframes flash{0%,52%{r:12;opacity:0}58%{r:14;opacity:.9}80%,100%{r:28;opacity:0}}
+@keyframes grip{0%,100%{transform:rotate(0)}50%{transform:rotate(-10deg)}}
+@keyframes think{0%,100%{opacity:1}50%{opacity:.35}}
+.s.play .arm .sig{animation:sig 2.4s linear infinite;animation-delay:calc(1600ms + var(--d))}
+.s.play .arm .flash{animation:flash 2.4s ease-out infinite;animation-delay:calc(1600ms + var(--d))}
+.s.play .arm .grip{animation:grip 2.4s ease-in-out 2.6s infinite}
+.s.play .arm .n1{animation:think 1.2s ease-in-out 1.6s infinite}
+.s.play .arm .n2{animation:think 1.2s ease-in-out 2s infinite}
+.s.play .arm .n3{animation:think 1.2s ease-in-out 2.4s infinite}
+@media (prefers-reduced-motion:reduce){.s.play .arm .sig,.s.play .arm .flash,.s.play .arm .grip,.s.play .arm .n1,.s.play .arm .n2,.s.play .arm .n3{animation:none!important}}
+
+/* ---------- 4 · engine (focal) ---------- */
+.ring .seg{fill:none;stroke-width:30;stroke-linecap:butt}
+.ring .seg{stroke-dasharray:var(--L) 2000}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes litA{0%,8%{opacity:1}8.6%,99.4%{opacity:.25}100%{opacity:1}}
+@keyframes litB{0%,8%{opacity:.25}8.6%,24.6%{opacity:1}25.2%,100%{opacity:.25}}
+@keyframes litC{0%,24.6%{opacity:.25}25.2%,33%{opacity:1}33.6%,100%{opacity:.25}}
+@keyframes rowA{0%,24%{opacity:1;background:#fff;box-shadow:0 6px 20px rgba(80,0,0,.10)}25.5%,98.5%{opacity:.5;background:transparent;box-shadow:none}100%{opacity:1;background:#fff;box-shadow:0 6px 20px rgba(80,0,0,.10)}}
+@keyframes rowB{0%,24%{opacity:.5;background:transparent;box-shadow:none}25.5%,74%{opacity:1;background:#fff;box-shadow:0 6px 20px rgba(80,0,0,.10)}75.5%,100%{opacity:.5;background:transparent;box-shadow:none}}
+@keyframes rowC{0%,74%{opacity:.5;background:transparent;box-shadow:none}75.5%,98.5%{opacity:1;background:#fff;box-shadow:0 6px 20px rgba(80,0,0,.10)}100%{opacity:.5;background:transparent;box-shadow:none}}
+@keyframes halo{0%{r:13;opacity:.55}100%{r:30;opacity:0}}
+.ring .orbit{transform-box:view-box;transform-origin:230px 230px}
+.s.play .ring .seg{animation:dash .8s var(--ease) both;animation-delay:var(--d)}
+.s.play .ring .seg.a{animation:dash .7s var(--ease) both var(--d),litA 18s linear var(--lit) infinite}
+.s.play .ring .seg.b{animation:dash .7s var(--ease) both var(--d),litB 18s linear var(--lit) infinite}
+.s.play .ring .seg.c{animation:dash .7s var(--ease) both var(--d),litC 18s linear var(--lit) infinite}
+.s.play .ring .orbit{animation:fade .4s ease both 1s,spin 18s linear 1.2s infinite}
+.s.play .ring .halo{animation:halo 1.6s ease-out 1.2s infinite}
+.stage{display:flex;gap:16px;padding:14px 18px;border-radius:4px}
+.stage .dot{width:14px;height:14px;border-radius:50%;flex:none;margin-top:6px}
+.stage h2{margin:0;font-size:20px;font-weight:600}
+.stage .tagline{font-size:15.5px;font-weight:500;margin:1px 0 3px}
+.stage .when{font-family:var(--mono);font-size:12px;color:var(--mute);margin-left:8px;font-weight:400}
+.s.play .stage.a{animation:rise .6s var(--ease) both 200ms,rowA 6s linear 1.2s infinite}
+.s.play .stage.b{animation:rise .6s var(--ease) both 350ms,rowB 6s linear 1.2s infinite}
+.s.play .stage.c{animation:rise .6s var(--ease) both 500ms,rowC 6s linear 1.2s infinite}
+.split{display:flex;height:8px;gap:2px;margin-top:8px;max-width:340px}
+
+/* ---------- 5 · org ---------- */
+.box{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:14px 16px;text-align:center}
+.box h2{margin:0;font-size:18px;font-weight:600}
+.box p{margin:4px 0 0;font-size:14px;color:var(--mute);font-weight:300}
+.vline{width:1px;height:30px;background:var(--tan);margin:0 auto}
+
+/* ---------- 10 · gate ---------- */
+.crit{display:flex;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule2)}
+.crit:last-child{border-bottom:0}
+.crit svg{flex:none}
+.tick{stroke-dasharray:var(--L) 2000}
+
+
+/* ---------- 11 · vision (closing) ---------- */
+.s.vision{background:radial-gradient(120% 90% at 78% 50%,#4A1414 0%,#2A0B0B 55%,#1C0808 100%);color:var(--cream)}
+.s.vision .pg{color:rgba(250,246,238,.45)}
+.vision .ring-v{fill:none;stroke:rgba(228,176,74,.16);stroke-width:1}
+.vision .link{stroke:#E4B04A;stroke-width:2;fill:none;stroke-linecap:round;opacity:.85}
+.vision .link.gms{stroke:rgba(228,176,74,.55);stroke-dasharray:3 7}
+.vision .pnode{fill:#E4B04A;stroke:#2A0B0B;stroke-width:3;transform-box:fill-box;transform-origin:center}
+.vision .gnode{fill:none;stroke:rgba(228,176,74,.8);stroke-width:2;transform-box:fill-box;transform-origin:center}
+.vision .hub{fill:#FFF0D2;stroke:#E4B04A;stroke-width:5;transform-box:fill-box;transform-origin:center}
+.vision .pulse{fill:none;stroke:#E4B04A;stroke-width:2;opacity:0}
+.vision .plabel{font-family:Prompt;font-size:15px;fill:rgba(250,246,238,.85)}
+.vision .glabel{font-family:Prompt;font-size:14px;fill:rgba(228,176,74,.85)}
+.vision .hublabel{font-family:'IBM Plex Mono';font-weight:600;font-size:22px;fill:#FFF0D2}
+.vision .hubsub{font-family:Prompt;font-size:13px;fill:rgba(250,246,238,.7)}
+@keyframes pulseOut{0%{r:16;opacity:.7}100%{r:120;opacity:0}}
+.s.play.vision .pulse{animation:pulseOut 2.6s ease-out 1.2s infinite}
+.vision .pillar{display:flex;gap:18px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(250,246,238,.14)}
+.vision .pillar .k{font-size:24px;font-weight:600;color:#E4B04A;width:86px;flex:none}
+.vision .pillar .v{font-size:16px;font-weight:300;line-height:1.5;color:rgba(250,246,238,.88)}
+.vision .pillar .v b{font-weight:500;color:#FFF0D2}
+.vision .goal .num{font-size:44px;color:#FFF0D2}
+.vision .goal .lbl{color:rgba(250,246,238,.7);font-size:14px;margin-top:6px}
+@media (prefers-reduced-motion:reduce){.s.play.vision .pulse{animation:none!important}}
+
+@media (prefers-reduced-motion:reduce){
+  .s.play [class*="a-"],.s.play .mark *,.s.play .ring .seg,.s.play .stage{animation:fade .3s ease both !important}
+  .s.play .ring .orbit,.s.play .ring .halo,.s.play .mark .spark path,.s.play .bg{animation:none !important}
+  .s.play .ring .orbit{opacity:1}
+  .s.play .stage{opacity:1}
+}
+
+.why .row .k{width:104px}
+/* ---------- story devices: chapter thread (top) + bridge to the next slide (bottom) ---------- */
+.thread{position:absolute;top:15px;right:60px;display:flex;align-items:center;gap:8px;font-size:12px;color:#B3A691;z-index:2}
+.thread i{width:16px;height:1px;background:var(--rule)}
+.thread span.done{color:var(--mute)}
+.thread span.on{color:var(--red);font-weight:600}
+.bridge{position:absolute;left:60px;bottom:14px;font-size:13px;color:var(--mute);font-weight:300}
+.bridge b{color:var(--red);font-weight:500}
+.s.dark .thread{color:rgba(250,246,238,.4)} .s.dark .thread i{background:rgba(250,246,238,.25)}
+.s.dark .thread span.done{color:rgba(250,246,238,.62)} .s.dark .thread span.on{color:#E4B04A}
+.s.dark .bridge{color:rgba(250,246,238,.6)} .s.dark .bridge b{color:#F2C46A}
+
+/* ---------- why: one in five ---------- */
+.ppl .p{transform-box:fill-box;transform-origin:bottom center}
+.ship{display:flex;align-items:flex-end;gap:10px;margin-top:12px}
+.ship .c{flex:1;text-align:center}
+.ship .v{font-family:var(--mono);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.ship .y{font-size:13px;color:var(--mute);margin-top:2px}
+.ship .arrow{color:var(--tan);font-size:20px;padding-bottom:18px}
+
+/* ---------- edge list (what foreign makers cannot build) ---------- */
+.edge{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-top:1px solid var(--rule2)}
+.edge:first-of-type{border-top:0}
+.edge .k{font-size:18px;font-weight:600;color:var(--red);width:84px;flex:none}
+.edge .v{font-size:15px;font-weight:300;color:var(--ink2);line-height:1.5}
+
+/* ---------- the brain for care ---------- */
+.capcol{flex:1;height:400px;display:flex;flex-direction:column;justify-content:space-around}
+.cap{height:168px;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+.cap h3{margin:0;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.cap h3 .ic{width:28px;height:28px;border-radius:50%;background:var(--red);color:var(--hi);font:600 14px var(--mono);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.cap h3 .en{font-size:12.5px;color:var(--mute);font-weight:400;margin-left:auto;font-family:var(--mono)}
+.cap p{margin:7px 0 0;font-size:15px;color:var(--ink2);font-weight:300;line-height:1.5}
+.cap p b{color:var(--ink);font-weight:500}
+.bubble{margin-top:8px;align-self:flex-start;background:var(--hi);border-radius:12px 12px 12px 3px;padding:6px 12px;font-size:15px;font-weight:500;color:var(--red)}
+.bubble span{font-size:12px;color:var(--gold2);font-weight:400;margin-left:6px}
+.bot .conn{fill:none;stroke:#C9A87A;stroke-width:1.6;stroke-dasharray:var(--L) 2000}
+.bot .tray{transform-box:view-box;transform-origin:270px 226px}
+@keyframes carry{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
+.s.play .bot .tray{animation:carry 3s ease-in-out 2.4s infinite}
+@media (prefers-reduced-motion:reduce){.s.play .bot .tray{animation:none!important}}
+
+/* ---------- photo slide: care ---------- */
+.s.carep{background:#2A0B0B;color:var(--cream)}
+.s.carep .bg{background-image:url(care.jpg);background-position:70% 40%;filter:saturate(.9)}
+.s.carep .shade{background:linear-gradient(90deg,rgba(24,6,6,.95) 0%,rgba(38,9,9,.88) 40%,rgba(38,9,9,.35) 68%,rgba(38,9,9,.05) 88%),
+  linear-gradient(0deg,rgba(20,5,5,.7) 0%,rgba(20,5,5,0) 30%)}
+.s.carep .pg{color:rgba(250,246,238,.5)}
+.carep .pillar{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-top:1px solid rgba(250,246,238,.16)}
+.carep .pillar .k{font-size:22px;font-weight:600;color:#E4B04A;width:92px;flex:none}
+.carep .pillar .v{font-size:16px;font-weight:300;line-height:1.5;color:rgba(250,246,238,.88)}
+.carep .pillar .v b{font-weight:500;color:#FFF0D2}
+.carep .q{display:flex;gap:10px;align-items:center;white-space:nowrap;padding:9px 13px;background:rgba(24,6,6,.55);border:1px solid rgba(228,176,74,.35);border-radius:6px;font-size:16px}
+.carep .q .n{font:600 15px var(--mono);color:#E4B04A}
+.aicred{position:absolute;right:24px;bottom:34px;font-size:11px;color:rgba(250,246,238,.55)}
+
+/* ---------- org (compact) ---------- */
+.ob{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:10px 14px;text-align:center}
+.ob h2{margin:0;font-size:16px;font-weight:600}
+.ob p{margin:3px 0 0;font-size:13px;color:var(--mute);font-weight:300}
+.vl{width:1px;height:20px;background:var(--tan);margin:0 auto}
+.ph{padding:14px 18px;border-radius:4px}
+.ph .t{font-size:20px;font-weight:600}
+.ph .r{display:grid;grid-template-columns:84px 1fr;row-gap:6px;margin-top:8px;font-size:15px;font-weight:300}
+.ph .r .l{color:var(--mute);font-size:13.5px}
+
+/* ---------- Embodied Intelligence ---------- */
+.plat{display:flex;gap:22px;align-items:center;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:20px 22px}
+.plat h3{margin:0;font-size:20px;font-weight:600}
+.plat .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.plat .tags span{font-size:12.5px;padding:2px 9px;border-radius:999px;background:var(--cream2);color:var(--ink2)}
+.plat .tags span.k{background:var(--red);color:var(--hi)}
+.vbar{display:flex;align-items:flex-end;gap:14px;height:230px;margin-top:14px}
+.vbar .c{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center}
+.vbar .b{background:var(--red-m);border-radius:3px 3px 0 0}
+.vbar .v{font:600 16px var(--mono);margin-bottom:4px}
+.vbar .y{font-size:12.5px;color:var(--mute);margin-top:5px}
+
+/* ---------- 3-year plan ---------- */
+.yr{flex:1;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.yr .h{padding:10px 16px;color:var(--hi)}
+.yr .h .n{font:600 13px var(--mono);opacity:.8}
+.yr .h .t{font-size:18px;font-weight:600}
+.yr ul{margin:0;padding:14px 18px 16px 34px;font-size:16px;font-weight:300;line-height:1.5;color:var(--ink2)}
+.yr li{margin:6px 0}
+.yr li b{color:var(--ink);font-weight:500}
+.cur{flex:1;padding:10px 14px;border-left:3px solid var(--gold);background:var(--cream2)}
+.cur .k{font:600 17px var(--mono);color:var(--red)}
+.cur .k span{font:500 14px var(--sans);color:var(--ink);margin-left:8px}
+.cur .v{font-size:14.5px;font-weight:300;color:var(--ink2);margin-top:3px;line-height:1.45}
+
+/* ---------- budget ---------- */
+.bk{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:16px 20px}
+.bk .top{display:flex;align-items:baseline;gap:10px}
+.bk .nm{font-size:20px;font-weight:600;flex:1}
+.bk .amt{font:600 28px var(--mono);letter-spacing:-.02em}
+.bk .sbar{display:flex;height:14px;gap:2px;margin:12px 0 10px}
+.bk .row{display:flex;align-items:baseline;gap:9px;font-size:14.5px;font-weight:300;color:var(--ink2);padding:2px 0}
+.bk .row i{width:10px;height:10px;display:inline-block;flex:none}
+.bk .row .a{margin-left:auto;font:500 14px var(--mono);color:var(--ink)}
+
+/* ---------- 5-year path ---------- */
+.road{display:grid;grid-template-columns:150px repeat(4,1fr);grid-template-rows:auto 1fr 1fr 1fr;gap:6px;flex:1}
+.road .hd{font:600 15px var(--mono);color:var(--ink2);padding:4px 10px;border-bottom:2px solid var(--rule)}
+.road .hd span{font:400 12.5px var(--sans);color:var(--mute);margin-left:6px}
+.road .ln{display:flex;flex-direction:column;justify-content:center;padding:8px 10px}
+.road .ln b{font-size:16px;font-weight:600}
+.road .ln span{font-size:12.5px;color:var(--mute)}
+.road .rc{display:flex;align-items:center;background:#fff;border:1px solid var(--rule2);border-radius:4px;padding:12px 14px;font-size:15.5px;font-weight:300;line-height:1.45;color:var(--ink2)}
+.road .rc b{color:var(--ink);font-weight:500}
+.road .care{background:var(--red);border-color:var(--red-d);color:rgba(255,240,210,.88)}
+.road .care b{color:#FFF6E6}
+.road .ln.care{background:none;border:0}
+.road .ln.care b{color:var(--red)} .road .ln.care span{color:var(--mute)}
+
+/* ---------- ask ---------- */
+/* ---------- slide 8 v2: photo cards + why AgiBot ---------- */
+.pcard{flex:1;min-width:0;background:#fff;border:1px solid var(--rule);border-radius:6px;padding:12px 16px 14px;display:flex;flex-direction:column}
+.pcard .ph{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pcard .ph img{max-height:100%;max-width:100%;object-fit:contain;display:block}
+.pcard h3{margin:6px 0 0;font-size:20px;font-weight:600}
+.pcard .kind{font-size:13.5px;font-weight:500}
+.pcard .txt{font-size:14px;margin-top:2px}
+.pcard .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.pcard .tags span{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--cream2);color:var(--ink2)}
+.pcard .tags span.k{background:var(--red);color:var(--hi)}
+.why2{display:flex;gap:14px;padding:11px 0;border-top:1px solid var(--rule2)}
+.why2:first-of-type{border-top:0}
+.why2 .n{font:600 20px var(--mono);color:var(--red);width:20px;flex:none;line-height:1.3}
+.why2 b{font-size:16.5px;font-weight:600;display:block}
+.why2 span{display:block;font-size:14px;font-weight:300;color:var(--ink2);line-height:1.5;margin-top:2px}
+/* ---------- sample use cases ---------- */
+.uc{flex:1;min-width:0;background:#fff;border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.uc .pic{position:relative;height:262px;flex:none;background:#2A0B0B center/cover no-repeat}
+.uc .pk{position:absolute;left:10px;top:10px;font-size:12px;padding:3px 10px;border-radius:999px;background:rgba(28,22,16,.78);color:#FFF0D2}
+.uc .no{position:absolute;right:10px;bottom:8px;font:600 30px var(--mono);color:#FFF6E6;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+.uc .bd{padding:12px 15px 13px;display:flex;flex-direction:column;flex:1}
+.uc h3{margin:0;font-size:18px;font-weight:600;line-height:1.3}
+.uc .what{font-size:15px;font-weight:300;color:var(--ink2);line-height:1.5;margin-top:5px}
+.uc .who{font-size:13px;color:var(--mute);margin-top:7px}
+.uc .when{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule2);font-size:13.5px;font-weight:500;color:var(--red)}
+.ask{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(255,240,210,.18)}
+.ask:last-child{border-bottom:0}
+.ask .n{font:600 26px var(--mono);color:#E4B04A;width:30px;flex:none;line-height:1.1}
+.ask .v{font-size:17px;line-height:1.5}
+.ask .v span{display:block;font-size:14px;color:rgba(255,240,210,.75);font-weight:300}
+
+/* ---------- robot-concept-deck: one brain, many bodies ---------- */
+.core{background:var(--red);color:var(--hi);border-radius:8px;padding:18px 22px;display:flex;align-items:center;gap:22px}
+.core .t{font-size:24px;font-weight:600;line-height:1.25}
+.core .t span{display:block;font-size:14px;font-weight:300;color:rgba(255,240,210,.8);margin-top:3px}
+.core .sk{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.core .sk span{font-size:14px;padding:5px 12px;border-radius:999px;background:rgba(255,240,210,.14);box-shadow:inset 0 0 0 1px rgba(255,240,210,.3)}
+.core .sk b{font:600 12px var(--mono);color:#F2C46A;margin-right:6px}
+.links{height:34px;position:relative}
+.links svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.links path{fill:none;stroke:#C9A87A;stroke-width:1.6}
+.body4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1;min-height:0}
+.bd4{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:14px 16px 16px;display:flex;flex-direction:column}
+.bd4 .pic{height:196px;display:flex;align-items:center;justify-content:center;background:var(--cream2);border-radius:4px}
+.bd4 h3{margin:14px 0 0;font-size:20px;font-weight:600}
+.bd4 .job{font-size:15.5px;font-weight:300;color:var(--ink2);line-height:1.5;margin-top:5px}
+.bd4 .at{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule2);font-size:13.5px;font-weight:500;color:var(--red)}
+/* ---------- use cases: setting tag + continuum ---------- */
+.uc .set{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule2);font-size:13.5px;font-weight:500;color:var(--red)}
+.cont{display:flex;align-items:center;gap:10px;font-size:14px}
+.cont .st{display:flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--rule)}
+.cont .st i{width:9px;height:9px;border-radius:50%;display:block}
+/* ---------- principles ---------- */
+.pr{display:flex;gap:16px;padding:13px 0;border-top:1px solid var(--rule2)}
+.pr:first-of-type{border-top:0}
+.pr .n{font:600 22px var(--mono);color:var(--red);width:28px;flex:none;line-height:1.25}
+.pr b{font-size:19px;font-weight:600;display:block}
+.pr span{display:block;font-size:15px;font-weight:300;color:var(--ink2);line-height:1.5;margin-top:3px}
+.loop{background:var(--cream2);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.loop .st{display:flex;align-items:center;gap:12px;font-size:16px}
+.loop .st .d{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--mono);flex:none}
+.loop .ar{margin-left:16px;width:2px;height:16px;background:var(--tan)}
+/* ---------- close ---------- */
+.clph{flex:1;align-self:stretch;margin:6px 0;border-radius:8px;background:#2A0B0B url(care.jpg) 40% 40%/cover no-repeat;position:relative;overflow:hidden}
+.clph figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;background:linear-gradient(0deg,rgba(24,6,6,.88),rgba(24,6,6,0));color:#FFF6E6;font-size:18px;font-weight:500}
+</style>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+
+<!-- ═══════════ 1 · COVER ═══════════ -->
+<section class="s on cover" data-cap="ปก · Care Robot Concept">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="content">
+    <div class="a-fade" style="display:flex;justify-content:space-between;align-items:flex-start;--d:0ms">
+      <div><div style="font-size:16px;font-weight:500">มหาวิทยาลัยแม่ฟ้าหลวง</div><div class="lbl">Mae Fah Luang University</div></div>
+      <div style="text-align:right"><div style="font-size:16px;font-weight:500">สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์</div><div class="lbl">School of Applied Digital Technology</div></div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div style="display:flex;align-items:flex-end;gap:24px">
+      <svg class="mark" viewBox="40 136 432 276" width="250" height="160" aria-hidden="true">
+        <defs><linearGradient id="rangeCover" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E63A55"/><stop offset="1" stop-color="#A3122C"/></linearGradient></defs>
+        <circle class="sun" cx="418" cy="180" r="30" fill="#E4B04A"/>
+        <g class="range"><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 400.0 L220.0 400.0 L56.0 400.0 Z" fill="url(#rangeCover)"/><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 L232.0 366.4 L56.0 400.0 Z" fill="#000000" fill-opacity="0.09"/><path d="M56.0 400.0 L232.0 366.4 L220.0 400.0 L56.0 400.0 Z" fill="#000000" fill-opacity="0.225"/><path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 L232.0 366.4 L165.8 276.6 Z" fill="#FFFFFF" fill-opacity="0.09"/><path d="M242.8 299.5 L300.0 297.8 L232.0 366.4 L242.8 299.5 Z" fill="#000000" fill-opacity="0.135"/><path d="M242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 L300.0 297.8 L242.8 299.5 Z" fill="#FFFFFF" fill-opacity="0.125"/><path d="M323.5 246.8 L352.0 346.8 L300.0 297.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.165"/><path d="M323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 346.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.255"/><path d="M300.0 297.8 L352.0 346.8 L232.0 366.4 L300.0 297.8 Z" fill="#000000" fill-opacity="0.105"/><path d="M232.0 366.4 L352.0 346.8 L352.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.195"/><path d="M232.0 366.4 L352.0 400.0 L220.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.285"/><path d="M352.0 346.8 L456.0 400.0 L352.0 400.0 L352.0 346.8 Z" fill="#000000" fill-opacity="0.3"/></g>
+        <g class="ridge" stroke="#F3D48A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".9">
+          <path d="M242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8" style="--L:101.3;--d:0ms"/>
+          <path d="M300.0 297.8 L323.5 246.8" style="--L:56.2;--d:60ms"/>
+          <path d="M323.5 246.8 L352.0 346.8" style="--L:104.0;--d:120ms"/>
+          <path d="M323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0" style="--L:205.0;--d:180ms"/>
+          <path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6" style="--L:166.8;--d:240ms"/>
+          <path d="M165.8 276.6 L232.0 366.4" style="--L:111.5;--d:300ms"/>
+          <path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5" style="--L:84.0;--d:360ms"/>
+          <path d="M232.0 366.4 L300.0 297.8" style="--L:96.6;--d:420ms"/>
+          <path d="M242.8 299.5 L300.0 297.8" style="--L:57.2;--d:480ms"/>
+          <path d="M300.0 297.8 L352.0 346.8" style="--L:71.4;--d:540ms"/>
+          <path d="M232.0 366.4 L242.8 299.5" style="--L:67.7;--d:600ms"/>
+          <path d="M232.0 366.4 L352.0 346.8" style="--L:121.6;--d:660ms"/>
+          <path d="M352.0 346.8 L456.0 400.0" style="--L:116.8;--d:720ms"/>
+          <path d="M352.0 346.8 L352.0 400.0" style="--L:53.2;--d:780ms"/>
+          <path d="M56.0 400.0 L232.0 366.4" style="--L:179.2;--d:840ms"/>
+          <path d="M220.0 400.0 L232.0 366.4" style="--L:35.7;--d:900ms"/>
+          <path d="M232.0 366.4 L352.0 400.0" style="--L:124.6;--d:960ms"/>
+        </g>
+        <g class="spark">
+          <path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8" style="--L:185.3;--d:0ms"/>
+          <path d="M323.5 246.8 L300.0 297.8 L232.0 366.4" style="--L:152.8;--d:700ms"/>
+          <path d="M56.0 400.0 L232.0 366.4 L352.0 346.8" style="--L:300.8;--d:400ms"/>
+          <path d="M300.0 297.8 L352.0 346.8 L456.0 400.0" style="--L:188.3;--d:1100ms"/>
+          <path d="M165.8 276.6 L232.0 366.4 L220.0 400.0" style="--L:147.2;--d:1500ms"/>
+        </g>
+        <g fill="#E4B04A"><circle class="node" cx="300.0" cy="297.8" r="7.2"/><circle class="node" cx="232.0" cy="366.4" r="7.2"/><circle class="node" cx="352.0" cy="346.8" r="7.2"/></g>
+        <g fill="#FFFFFF" stroke="#E4B04A" stroke-width="5"><circle class="node" cx="165.8" cy="276.6" r="12"/><circle class="node" cx="242.8" cy="299.5" r="10"/><circle class="node" cx="323.5" cy="246.8" r="13"/></g>
+      </svg>
+        <div style="padding-bottom:8px">
+          <div class="num a-wipe" style="font-size:96px;color:#FFF6E6;--d:1700ms">ARIC</div>
+          <div class="lbl a-fade" style="font-size:16px;margin-top:8px;letter-spacing:.06em;--d:2200ms">Care Robot Concept · AI &amp; Robotics Innovation Center</div>
+        </div>
+      </div>
+      <div class="a-rise" style="--d:2300ms;margin-top:26px">
+        <div style="font-size:50px;font-weight:600;line-height:1.22">หุ่นยนต์เพื่อการรักษาและสุขภาวะ<br>ด้วย<span style="color:#F2C46A">สมอง</span>ที่เข้าใจการดูแลคนไทย</div>
+        <div style="font-size:18px;font-weight:300;margin-top:12px;color:rgba(250,246,238,.82)">แนวคิดหุ่นยนต์ในงานสุขภาพและการดูแลผู้สูงอายุ · พฤศจิกายน ๒๕๖๙</div>
+        <div class="flow">
+          <span class="step a-rise" style="--d:2500ms"><i style="background:#C8102E"></i><b>ทำไม</b><span>สังคมสูงวัย</span></span>
+          <svg class="arr a-fade" style="--d:2600ms" width="22" height="14" viewBox="0 0 26 14" aria-hidden="true"><path d="M1 7h22M17 1l6 6-6 6" fill="none" stroke="#F2C46A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="step a-rise" style="--d:2700ms"><i style="background:#D9645E"></i><b>แนวคิด</b><span>สมองเพื่อการดูแล</span></span>
+          <svg class="arr a-fade" style="--d:2800ms" width="22" height="14" viewBox="0 0 26 14" aria-hidden="true"><path d="M1 7h22M17 1l6 6-6 6" fill="none" stroke="#F2C46A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="step a-rise" style="--d:2900ms"><i style="background:#E4B04A"></i><b>ใช้ที่ไหน</b><span>โรงพยาบาลถึงบ้าน</span></span>
+          <svg class="arr a-fade" style="--d:3000ms" width="22" height="14" viewBox="0 0 26 14" aria-hidden="true"><path d="M1 7h22M17 1l6 6-6 6" fill="none" stroke="#F2C46A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="step a-rise" style="--d:3100ms"><i style="background:#FFF0D2"></i><b>หลักการ</b><span>ช่วย ไม่แทน</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">01</div>
+</section>
+
+
+<section class="s why" data-cap="ทำไม · Why">
+  <div class="thread" aria-hidden="true"><span class="on">ทำไม</span><i></i><span class="">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="body" style="gap:50px;align-items:center">
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+      <div class="lead a-fade" style="--d:200ms">เราเชื่อว่า</div>
+      <h1 class="a-wipe" style="font-size:54px;--d:400ms">หุ่นยนต์ซื้อได้<br>แต่<span class="red">สมองที่ดูแลคนไทย</span><br>ต้องสร้างเอง</h1>
+      <div class="rows" style="margin-top:26px">
+        <div class="row a-rise" style="--d:1700ms"><div class="k" style="color:var(--red)">สังคม</div><div class="v">คนไทย<b>ทุก 1 ใน 5 อายุ 60 ปีขึ้นไป</b> — ผู้ที่ต้องได้รับการดูแลเพิ่มขึ้น แต่คนดูแลมีจำกัด</div></div>
+        <div class="row a-rise" style="--d:1850ms"><div class="k" style="color:var(--gold2)">เทคโนโลยี</div><div class="v">AI กำลัง<b>ก้าวออกจากหน้าจอสู่โลกจริง</b> ผ่านหุ่นยนต์ที่มองเห็น คิด และลงมือทำได้</div></div>
+        <div class="row a-rise" style="--d:2000ms"><div class="k" style="color:var(--ink2)">มฟล.</div><div class="v">มีครบทั้ง<b>สำนักวิชาด้านสุขภาพ โรงพยาบาล และสำนักวิชาดิจิทัล</b> — จุดที่สมองเพื่อการดูแลเกิดได้จริง</div></div>
+      </div>
+    </div>
+    <div style="flex:none;width:450px;display:flex;flex-direction:column;gap:30px">
+      <div>
+        <svg class="ppl" viewBox="0 0 470 106" width="450" height="101" role="img" aria-label="คนไทย 1 ใน 5 คน อายุ 60 ปีขึ้นไป"><g class="p a-pop" style="--d:900ms"><circle cx="47" cy="26" r="17" fill="#D8CCB6"/><path d="M18 104 Q18 54 47 54 Q76 54 76 104 Z" fill="#D8CCB6"/></g><g class="p a-pop" style="--d:1020ms"><circle cx="141" cy="26" r="17" fill="#D8CCB6"/><path d="M112 104 Q112 54 141 54 Q170 54 170 104 Z" fill="#D8CCB6"/></g><g class="p a-pop" style="--d:1140ms"><circle cx="235" cy="26" r="17" fill="#D8CCB6"/><path d="M206 104 Q206 54 235 54 Q264 54 264 104 Z" fill="#D8CCB6"/></g><g class="p a-pop" style="--d:1260ms"><circle cx="329" cy="26" r="17" fill="#D8CCB6"/><path d="M300 104 Q300 54 329 54 Q358 54 358 104 Z" fill="#D8CCB6"/></g><g class="p a-pop" style="--d:1380ms"><circle cx="423" cy="26" r="17" fill="#7A1C1C"/><path d="M394 104 Q394 54 423 54 Q452 54 452 104 Z" fill="#7A1C1C"/></g></svg>
+        <div class="a-rise" style="--d:1500ms;margin-top:12px">
+          <div style="display:flex;align-items:baseline;gap:12px"><span class="num red" style="font-size:46px" data-count="14.16" data-dec="2">14.16</span><span style="font-size:18px;font-weight:500">ล้านคน · <span class="num" style="font-size:22px">20.2%</span></span></div>
+          <div class="txt">ผู้สูงอายุ 60 ปีขึ้นไปของไทย</div>
+          <div class="note" style="font-size:12.5px">สำนักงานสถิติแห่งชาติ · ข้อมูลปี ๒๕๖๗</div>
+        </div>
+      </div>
+      <div class="a-rise" style="--d:2200ms;border-top:1px solid var(--rule);padding-top:18px">
+        <div style="font-size:16px;font-weight:600">หุ่นยนต์ฮิวแมนนอยด์ที่คาดว่าจะส่งมอบต่อปี</div>
+        <div class="ship">
+          <div class="c"><div class="v" style="color:var(--mute)">75,000</div><div class="y">๒๕๖๙</div></div><div class="arrow">→</div>
+          <div class="c"><div class="v" style="color:var(--gold2)">890,000</div><div class="y">๒๕๗๓</div></div><div class="arrow">→</div>
+          <div class="c"><div class="v red">6.5 ล้าน</div><div class="y">๒๕๗๘</div></div>
+        </div>
+        <div class="note" style="font-size:12.5px;margin-top:6px">Goldman Sachs Research · ประมาณการ ก.ย. ๒๕๖๙</div>
+      </div>
+    </div>
+  </div>
+  <div class="bridge">ถัดไป → <b>ไทยควรสร้างส่วนไหนของหุ่นยนต์</b></div>
+  <div class="pg">02</div>
+</section>
+
+<section class="s" data-cap="สร้างสมอง ไม่สร้างมือกล">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="head">
+    <h1 class="t">ไม่สร้างมือกล — <span class="red">เราสร้างสมองให้หุ่นยนต์</span></h1>
+    <div class="sub">ตัวหุ่นยนต์ถูกห่วงโซ่อุปทานจีนครองแล้ว แต่ชั้นที่ต้องเข้าใจ<b>ภาษา ข้อมูล และหน้างานของไทย</b>ยังว่าง</div>
+  </div>
+  <div class="body" style="gap:40px">
+    <div style="flex:1.5;display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+        <div style="font-size:18px;font-weight:600">ชั้นของ Physical AI</div>
+        <div class="lbl">Physical AI stack</div>
+      </div>
+      <div style="display:flex;gap:18px;align-items:flex-end">
+        <svg class="arm" viewBox="0 0 230 420" width="200" height="365" role="img" aria-label="แขนกลสีเทาคือฮาร์ดแวร์ที่ซื้อได้ ส่วนชิปสีแดงคือสมองที่ ARIC สร้าง ส่งสัญญาณไปควบคุมทุกข้อต่อ">
+          <g class="wires a-fade" style="--d:800ms"><path d="M115 84 Q150 110 150 168" class="wire"/><path d="M115 84 Q40 140 68 246" class="wire"/><path d="M115 84 Q215 220 115 352" class="wire"/></g>
+          <!-- hardware: grey, draws in with L1-L2 -->
+          <path class="a-fade" d="M58 404 H172 L160 380 H70 Z" fill="#D8CCB6" style="--d:100ms"/>
+          <path class="link a-dash" d="M115 352 L68 246" stroke-width="20" style="--L:116.0;--d:150ms"/>
+          <path class="link a-dash" d="M68 246 L150 168" stroke-width="15" style="--L:113.2;--d:300ms"/>
+          <g class="grip">
+            <path class="link" d="M150 168 l26 -12" stroke-width="6"/>
+            <path class="link" d="M150 168 l24 14" stroke-width="6"/>
+          </g>
+          <circle class="flash" cx="150" cy="168" r="20" style="--d:0ms"/><circle class="flash" cx="68" cy="246" r="20" style="--d:400ms"/><circle class="flash" cx="115" cy="352" r="20" style="--d:800ms"/>
+          <circle class="joint a-pop" cx="115" cy="352" r="17" style="--d:200ms"/>
+          <circle class="joint a-pop" cx="68" cy="246" r="13" style="--d:330ms"/>
+          <circle class="joint a-pop" cx="150" cy="168" r="10" style="--d:450ms"/>
+          <g class="a-pop" style="--d:500ms"><circle cx="178" cy="150" r="9" fill="#4A3F33"/><circle cx="178" cy="150" r="3.5" fill="#E4B04A"/></g>
+          <!-- the brain: red, arrives with L3-L4 -->
+          <g class="chip a-focus" style="--d:700ms">
+            <g stroke="#93433F" stroke-width="3" stroke-linecap="round">
+              <path d="M95 30 v-8 M115 30 v-8 M135 30 v-8 M95 90 v8 M135 90 v8 M75 46 h-8 M75 66 h-8 M155 46 h8 M155 66 h8"/>
+            </g>
+            <rect x="75" y="30" width="80" height="60" rx="10" fill="#7A1C1C"/>
+            <g class="nn" stroke="#F3D48A" stroke-width="2" fill="none"><path d="M96 70 L115 48 L134 70 M96 70 H134"/></g>
+            <g fill="#E4B04A"><circle class="n1" cx="96" cy="70" r="4"/><circle class="n2" cx="115" cy="48" r="4.5"/><circle class="n3" cx="134" cy="70" r="4"/></g>
+          </g>
+          <g><path d="M115 84 Q150 110 150 168" class="sig" style="--L:94.6;--d:0ms"/><path d="M115 84 Q40 140 68 246" class="sig" style="--L:180.6;--d:400ms"/><path d="M115 84 Q215 220 115 352" class="sig" style="--L:291.1;--d:800ms"/></g>
+        </svg>
+        <div style="flex:1;min-width:0">
+        <div style="display:flex;flex-direction:column-reverse;gap:6px">
+        <div class="layer off a-slide" style="--d:100ms"><div class="L">L1</div><div style="flex:1"><div class="nm">กลไกและการผลิต</div><div class="ex">หุ่นยนต์ · มอเตอร์ · แขนกล · โดรน</div></div><div class="lbl">จีนครองตลาด</div></div>
+        <div class="layer off a-slide" style="--d:250ms"><div class="L">L2</div><div style="flex:1"><div class="nm">เซนเซอร์ การประมวลผล และข้อมูล</div><div class="ex">กล้อง · เซนเซอร์ · หน่วยประมวลผล · คลาวด์</div></div><div class="lbl">ผู้ผลิตระดับโลก</div></div>
+        <div class="layer on2 a-slide" style="--d:550ms"><div class="L">L3</div><div style="flex:1"><div class="nm">การรับรู้ การวางแผน และการควบคุม</div><div class="ex">computer vision · การนำทาง · โมเดลภาษา</div></div><span class="chip g a-pop" style="--d:1000ms">ARIC</span></div>
+        <div class="layer on1 a-slide" style="--d:700ms"><div class="L">L4</div><div style="flex:1"><div class="nm">การประยุกต์และปัญญาเฉพาะบริบท</div><div class="ex">โมเดลเฉพาะโจทย์ · ภาษาและข้อมูลไทย · กฎระเบียบ</div></div><span class="chip g a-pop" style="--d:1150ms">ARIC</span></div>
+      </div>
+        <div class="note a-fade" style="margin-top:10px;text-align:right;--d:1400ms">มือกลซื้อได้ · <b class="red">สมองคือสิ่งที่ ARIC สร้าง</b></div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:.8;display:flex;flex-direction:column;border-left:1px solid var(--rule);padding-left:34px">
+      <div style="font-size:18px;font-weight:600;margin-bottom:6px">สิ่งที่ผู้ผลิตต่างชาติสร้างให้ไม่ได้</div>
+      <div class="edge a-rise" style="--d:500ms"><div class="k">ภาษา</div><div class="v">ภาษาไทยและภาษาถิ่น ที่ผู้สูงอายุใช้จริง</div></div>
+      <div class="edge a-rise" style="--d:650ms"><div class="k">ข้อมูล</div><div class="v">ข้อมูลสุขภาพและพฤติกรรมของคนไทย ภายใต้ PDPA</div></div>
+      <div class="edge a-rise" style="--d:800ms"><div class="k">หน้างาน</div><div class="v">ขั้นตอนการดูแลของพยาบาลและโรงพยาบาลไทย</div></div>
+      <div class="edge a-rise" style="--d:950ms"><div class="k">ความไว้ใจ</div><div class="v">แพทย์และพยาบาลของ มฟล. ร่วมออกแบบและรับรองความปลอดภัย</div></div>
+    </div>
+  </div>
+  <div class="bridge">ถัดไป → <b>สมองแบบไหนที่เราอยากสร้างก่อน</b></div>
+  <div class="pg">03</div>
+</section>
+
+<section class="s" data-cap="สมองเพื่อการรักษาและดูแล">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="head">
+    <h1 class="t">สมองที่เราจะสร้างก่อน — <span class="red">สมองสำหรับการรักษาและดูแล</span></h1>
+    <div class="sub">หุ่นยนต์ที่<b>ช่วยพยาบาลและผู้ดูแล</b>ในโรงพยาบาลและที่บ้าน — ตัวหุ่นซื้อจากผู้ผลิตระดับโลก ส่วนสมองเราสร้างเอง</div>
+  </div>
+  <div class="body" style="gap:4px;align-items:center">
+    <div class="capcol">
+      <div class="cap a-slide" style="--d:1500ms"><h3><span class="ic">1</span>มองเห็น<span class="en">perceive</span></h3>
+        <p>รู้ว่าผู้ป่วย<b>ล้ม เจ็บปวด หรือต้องการความช่วยเหลือ</b> และจำได้ว่าใครเป็นใคร</p></div>
+      <div class="cap a-slide" style="--d:1650ms"><h3><span class="ic">2</span>ฟังและพูด<span class="en">converse</span></h3>
+        <p>คุยกับผู้สูงอายุด้วย<b>ภาษาไทยและภาษาถิ่น</b> อย่างสุภาพ</p>
+        <div class="bubble">“แม่อุ๊ย กิ๋นยาแล้วกา”<span>ภาษาเหนือ · คุณยายทานยาหรือยัง</span></div></div>
+    </div>
+    
+<svg class="arm bot" viewBox="0 0 380 440" width="364" height="400" style="flex:none" role="img" aria-label="หุ่นยนต์ฮิวแมนนอยด์ถือถาดยา สมองสีแดงบนศีรษะคือส่วนที่ ARIC สร้าง ส่งสัญญาณไปยังตา มือ และขา">
+  <path class="conn a-dash" d="M158 86 C110 86 60 110 0 110" style="--L:175;--d:1500ms"/>
+  <path class="conn a-dash" d="M150 108 C96 150 52 330 0 330" style="--L:290;--d:1650ms"/>
+  <path class="conn a-dash" d="M216 42 C290 42 330 110 380 110" style="--L:190;--d:1800ms"/>
+  <path class="conn a-dash" d="M352 214 C372 236 374 300 380 330" style="--L:130;--d:1950ms"/>
+  <ellipse class="a-fade" cx="190" cy="430" rx="84" ry="8" fill="#E6DCC9" style="--d:0ms"/>
+  <path class="link a-dash" d="M172 296 L166 362 L164 422" stroke-width="16" style="--L:130;--d:100ms"/>
+  <path class="link a-dash" d="M208 296 L214 362 L216 422" stroke-width="16" style="--L:130;--d:150ms"/>
+  <path class="a-fade" d="M150 428 H178 M202 428 H230" stroke="#9C8C74" stroke-width="9" stroke-linecap="round" style="--d:200ms"/>
+  <path class="a-fade" d="M134 140 H246 L234 236 L220 300 H160 L146 236 Z" fill="#D8CCB6" stroke="#B9A88E" stroke-width="3" style="--d:200ms"/>
+  <rect class="a-fade" x="168" y="168" width="44" height="36" rx="7" fill="#C9BBA2" style="--d:300ms"/>
+  <path class="link a-dash" d="M138 152 L114 230 L118 298" stroke-width="13" style="--L:160;--d:300ms"/>
+  <g class="tray">
+    <path class="link a-dash" d="M242 152 L270 226 L322 222" stroke-width="13" style="--L:140;--d:350ms"/>
+    <g class="a-pop" style="--d:900ms">
+      <path d="M302 214 H358" stroke="#9C8C74" stroke-width="5" stroke-linecap="round"/>
+      <path d="M314 213 L311 190 H331 L328 213 Z" fill="#FAF6EE" stroke="#9C8C74" stroke-width="2.5"/>
+      <circle cx="346" cy="207" r="5" fill="#C8102E"/>
+    </g>
+  </g>
+  <circle class="flash" cx="322" cy="222" r="20" style="--d:400ms"/><circle class="flash" cx="118" cy="298" r="20" style="--d:800ms"/><circle class="flash" cx="190" cy="86" r="20" style="--d:0ms"/>
+  <circle class="joint a-pop" cx="138" cy="152" r="10" style="--d:400ms"/><circle class="joint a-pop" cx="242" cy="152" r="10" style="--d:420ms"/>
+  <circle class="joint a-pop" cx="114" cy="230" r="8" style="--d:480ms"/><circle class="joint a-pop" cx="270" cy="226" r="8" style="--d:500ms"/>
+  <circle class="joint a-pop" cx="166" cy="362" r="9" style="--d:300ms"/><circle class="joint a-pop" cx="214" cy="362" r="9" style="--d:320ms"/>
+  <rect class="a-fade" x="180" y="118" width="20" height="24" fill="#B9A88E" style="--d:250ms"/>
+  <g class="a-rise" style="--d:500ms">
+    <rect x="144" y="20" width="92" height="102" rx="36" fill="#4A3F33"/>
+    <rect x="156" y="72" width="68" height="28" rx="14" fill="#1C1610"/>
+    <circle cx="176" cy="86" r="5" fill="#E4B04A"/><circle cx="204" cy="86" r="5" fill="#E4B04A"/>
+  </g>
+  <g class="chip a-focus" style="--d:800ms">
+    <rect x="164" y="27" width="52" height="36" rx="8" fill="#7A1C1C"/>
+    <g stroke="#F3D48A" stroke-width="2" fill="none"><path d="M177 55 L190 38 L203 55 M177 55 H203"/></g>
+    <g fill="#E4B04A"><circle class="n1" cx="177" cy="55" r="3.2"/><circle class="n2" cx="190" cy="38" r="3.6"/><circle class="n3" cx="203" cy="55" r="3.2"/></g>
+  </g>
+  <g>
+    <path class="sig" d="M190 63 L190 86" style="--L:23;--d:0ms"/>
+    <path class="sig" d="M200 63 L190 130 L242 152 L270 226 L322 222" style="--L:262;--d:400ms"/>
+    <path class="sig" d="M180 63 L190 130 L138 152 L114 230 L118 298" style="--L:276;--d:800ms"/>
+  </g>
+</svg>
+    <div class="capcol">
+      <div class="cap a-rise" style="--d:1800ms"><h3><span class="ic">3</span>เข้าใจการดูแล<span class="en">reason</span></h3>
+        <p>รู้<b>แผนการรักษา ตารางยา</b> และขั้นตอนของพยาบาล — ตัดสินใจภายใต้กฎความปลอดภัย</p></div>
+      <div class="cap a-rise" style="--d:1950ms"><h3><span class="ic">4</span>ลงมืออย่างปลอดภัย<span class="en">act</span></h3>
+        <p><b>ส่งยาและเวชภัณฑ์ พยุงลุก ชวนทำกายภาพ</b> — ส่งเรื่องให้พยาบาลเมื่อเกินขอบเขต</p></div>
+    </div>
+  </div>
+  <div class="a-fade" style="--d:2300ms;display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:10px;border-top:1px solid var(--rule)">
+    <div class="note" style="font-size:14px">ใช้ได้ทั้ง <b>หอผู้ป่วย</b> · <b>คลินิกโรคเรื้อรัง (NCD)</b> · <b>สถานดูแลผู้สูงอายุ</b> · <b>บ้านของผู้ป่วย</b></div>
+    <div style="font-size:15px;font-weight:600;color:var(--red)">หลักการ: ช่วยพยาบาล ไม่แทนพยาบาล</div>
+  </div>
+  <div class="bridge">ถัดไป → <b>สมองเดียว ใช้ได้กับหุ่นยนต์หลายแบบ</b></div>
+  <div class="pg">04</div>
+</section>
+
+<!-- ═══════════ 5 · ONE BRAIN, MANY BODIES ═══════════ -->
+<section class="s" data-cap="สมองเดียว หลายร่าง">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="head">
+    <h1 class="t">สมองเดียว — <span class="red">ใช้ได้กับหุ่นยนต์หลายแบบ</span></h1>
+    <div class="sub">เลือกตัวหุ่นตาม<b>งานและงบประมาณ</b> ส่วนสมอง ข้อมูล และความรู้ด้านการดูแลเป็นของเราเอง ย้ายไปใช้กับหุ่นรุ่นใหม่ได้เสมอ</div>
+  </div>
+  <div class="body" style="flex-direction:column;gap:0">
+    <div class="core a-rise" style="--d:200ms">
+      <div class="t">สมองเพื่อการดูแล<span>ทำงานบนคลาวด์และบนตัวหุ่น · ปรับให้เข้ากับแต่ละโรงพยาบาลได้</span></div>
+      <div class="sk"><span><b>1</b>มองเห็น</span><span><b>2</b>ฟังและพูด</span><span><b>3</b>เข้าใจการดูแล</span><span><b>4</b>ลงมืออย่างปลอดภัย</span></div>
+    </div>
+    <div class="links a-fade" style="--d:600ms" aria-hidden="true"><svg viewBox="0 0 1000 34" preserveAspectRatio="none">
+      <path d="M500 0 C500 20 125 14 125 34" vector-effect="non-scaling-stroke"/><path d="M500 0 C500 20 375 14 375 34" vector-effect="non-scaling-stroke"/>
+      <path d="M500 0 C500 20 625 14 625 34" vector-effect="non-scaling-stroke"/><path d="M500 0 C500 20 875 14 875 34" vector-effect="non-scaling-stroke"/></svg></div>
+    <div class="body4"><div class="bd4 a-rise" style="--d:900ms"><div class="pic"><svg viewBox="0 0 120 110" width="190" height="174" aria-hidden="true"><rect x="44" y="6" width="32" height="30" rx="12" fill="#4A3F33"/><rect x="50" y="18" width="20" height="9" rx="4.5" fill="#1C1610"/><circle cx="56" cy="22.5" r="2" fill="#E4B04A"/><circle cx="64" cy="22.5" r="2" fill="#E4B04A"/><rect x="54" y="10" width="12" height="6" rx="2" fill="#C8102E"/><path d="M40 42 H80 L76 74 H44 Z" fill="#D8CCB6" stroke="#B9A88E" stroke-width="2"/><path d="M40 46 L28 70 L34 84 M80 46 L94 62 L108 60" fill="none" stroke="#9C8C74" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M52 74 L50 104 M68 74 L70 104" stroke="#9C8C74" stroke-width="7" stroke-linecap="round"/><rect x="100" y="52" width="16" height="6" rx="2" fill="#C8102E"/></svg></div><h3>หุ่นยนต์ฮิวแมนนอยด์</h3><div class="job">งานที่ต้องใช้มือและเดินในพื้นที่ของคน: ส่งของถึงเตียง พยุงลุก สาธิตท่ากายภาพ</div><div class="at">หอผู้ป่วย · ศูนย์ฟื้นฟู</div></div><div class="bd4 a-rise" style="--d:1050ms"><div class="pic"><svg viewBox="0 0 120 110" width="190" height="174" aria-hidden="true"><rect x="24" y="40" width="70" height="26" rx="10" fill="#D8CCB6" stroke="#B9A88E" stroke-width="2"/><rect x="88" y="34" width="22" height="20" rx="6" fill="#4A3F33"/><circle cx="102" cy="44" r="4" fill="#E4B04A"/><rect x="44" y="46" width="22" height="8" rx="3" fill="#C8102E"/><path d="M32 64 L26 82 L32 100 M48 64 L54 82 L48 100 M72 64 L66 82 L72 100 M86 64 L92 82 L86 100" fill="none" stroke="#9C8C74" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>หุ่นยนต์สี่ขา</h3><div class="job">เดินตรวจทางเดินและห้องพัก มองหาการล้มหรือสิ่งผิดปกติ ทั้งกลางวันและกลางคืน</div><div class="at">สถานดูแลผู้สูงอายุ · เวรดึก</div></div><div class="bd4 a-rise" style="--d:1200ms"><div class="pic"><svg viewBox="0 0 120 110" width="190" height="174" aria-hidden="true"><rect x="30" y="20" width="60" height="40" rx="6" fill="#4A3F33"/><rect x="38" y="27" width="44" height="22" rx="3" fill="#1C1610"/><path d="M50 38 h20 M60 32 v12" stroke="#C8102E" stroke-width="4" stroke-linecap="round"/><rect x="24" y="60" width="72" height="30" rx="6" fill="#D8CCB6" stroke="#B9A88E" stroke-width="2"/><path d="M34 72 h52" stroke="#B9A88E" stroke-width="2"/><circle cx="38" cy="96" r="8" fill="#9C8C74"/><circle cx="82" cy="96" r="8" fill="#9C8C74"/></svg></div><h3>หุ่นยนต์ขนส่ง</h3><div class="job">รับ–ส่งยา เวชภัณฑ์ และตัวอย่างตรวจ ระหว่างแผนก ลดเวลาเดินของพยาบาล</div><div class="at">งานหลังบ้านของโรงพยาบาล</div></div><div class="bd4 a-rise" style="--d:1350ms"><div class="pic"><svg viewBox="0 0 120 110" width="190" height="174" aria-hidden="true"><rect x="28" y="14" width="56" height="66" rx="8" fill="#4A3F33"/><rect x="34" y="20" width="44" height="46" rx="4" fill="#FAF6EE"/><circle cx="48" cy="38" r="3" fill="#4A3F33"/><circle cx="64" cy="38" r="3" fill="#4A3F33"/><path d="M47 49 Q56 56 65 49" fill="none" stroke="#C8102E" stroke-width="3" stroke-linecap="round"/><path d="M56 80 V96 M40 98 H72" stroke="#9C8C74" stroke-width="6" stroke-linecap="round"/><path d="M92 34 Q100 42 92 50 M98 28 Q110 42 98 56" fill="none" stroke="#E4B04A" stroke-width="3.5" stroke-linecap="round"/></svg></div><h3>ผู้ช่วยข้างเตียง</h3><div class="job">จอหรือลำโพงที่คุยด้วยภาษาไทยและภาษาถิ่น เตือนยา ถามอาการ แล้วสรุปส่งพยาบาลหรือญาติ</div><div class="at">บ้านของผู้ป่วย · คลินิก NCD</div></div></div>
+  </div>
+  <div class="bridge">ถัดไป → <b>ตัวอย่างงานจากโรงพยาบาลถึงบ้าน</b></div>
+  <div class="pg">05</div>
+</section>
+
+
+<!-- ═══════════ 6 · USE CASES ═══════════ -->
+<section class="s" data-cap="ตัวอย่างงาน · Use cases">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="head">
+    <h1 class="t">จากโรงพยาบาลถึงบ้าน — <span class="red">ตัวอย่างงาน ๔ แบบ</span></h1>
+    <div class="sub">สมองชุดเดียวกันรองรับ<b>ทุกช่วงของการดูแล</b> ตั้งแต่การรักษาในโรงพยาบาล จนถึงการส่งเสริมสุขภาวะในชุมชน</div>
+  </div>
+  <div class="body" style="flex-direction:column;gap:14px">
+    <div style="display:flex;gap:14px;flex:1;min-height:0"><div class="uc a-rise" style="--d:150ms"><div class="pic" style="background-image:url(uc_ward.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">1</span></div><div class="bd"><h3>ผู้ช่วยพยาบาลในหอผู้ป่วย</h3><div class="what">รับ–ส่งยาและเวชภัณฑ์ระหว่างเคาน์เตอร์พยาบาลกับเตียง เดินในหอและหลบคนอย่างปลอดภัย</div><div class="who">ผู้ได้ประโยชน์: พยาบาลหอผู้ป่วย</div><div class="set">รักษา · โรงพยาบาล</div></div></div><div class="uc a-rise" style="--d:300ms"><div class="pic" style="background-image:url(uc_talk.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">2</span></div><div class="bd"><h3>เพื่อนคุยภาษาเหนือ เตือนกินยา</h3><div class="what">คุยกับผู้สูงอายุด้วยภาษาเหนือ เตือนยาตามเวลา สังเกตอาการ แล้วสรุปส่งพยาบาลหรือญาติ</div><div class="who">ผู้ได้ประโยชน์: ผู้สูงอายุ · ผู้ป่วยกลุ่มเสี่ยง NCD</div><div class="set">ป้องกัน · คลินิกและบ้าน</div></div></div><div class="uc a-rise" style="--d:450ms"><div class="pic" style="background-image:url(uc_night.jpg)"><span class="pk">หุ่นยนต์สี่ขา</span><span class="no">3</span></div><div class="bd"><h3>เวรดึก ตรวจจับการล้ม</h3><div class="what">เดินตรวจทางเดินและห้องพัก เห็นการล้มหรือการลุกออกจากเตียง แล้วแจ้งพยาบาลทันที</div><div class="who">ผู้ได้ประโยชน์: สถานดูแลผู้สูงอายุ</div><div class="set">ดูแลระยะยาว · สถานดูแล</div></div></div><div class="uc a-rise" style="--d:600ms"><div class="pic" style="background-image:url(uc_coach.jpg)"><span class="pk">ฮิวแมนนอยด์</span><span class="no">4</span></div><div class="bd"><h3>โค้ชออกกำลังผู้สูงวัย</h3><div class="what">สาธิตท่าออกกำลังและกายภาพ นับจำนวนครั้ง ดูท่าทางผ่านกล้อง และปรับระดับให้เหมาะกับแต่ละคน</div><div class="who">ผู้ได้ประโยชน์: ผู้สูงอายุในชุมชน · ผู้ป่วยระยะฟื้นฟู</div><div class="set">สุขภาวะ · ชุมชน</div></div></div></div>
+    <div class="cont a-fade" style="--d:900ms"><span style="font-weight:600">ช่วงของการดูแล</span><span class="st"><i style="background:#C8102E"></i>รักษา</span><span style="color:var(--tan)">→</span><span class="st"><i style="background:#D9645E"></i>ป้องกัน</span><span style="color:var(--tan)">→</span><span class="st"><i style="background:#E4B04A"></i>ดูแลระยะยาว</span><span style="color:var(--tan)">→</span><span class="st"><i style="background:#3F8F6F"></i>สุขภาวะ (wellness)</span>
+      <span class="note" style="margin-left:auto;font-size:11.5px">ภาพหุ่นยนต์จริงบนฉากจำลองที่สร้างด้วย AI</span></div>
+  </div>
+  <div class="bridge">ถัดไป → <b>โจทย์จริงและคนที่ใช่</b></div>
+  <div class="pg">06</div>
+</section>
+
+
+<section class="s carep dark" data-cap="โจทย์จริงอยู่ใน มฟล.">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span><i></i><span class="">หลักการ</span></div>
+  <div class="body" style="position:relative;flex-direction:column;justify-content:center;max-width:700px">
+    <h1 class="a-wipe" style="font-size:46px;font-weight:600;line-height:1.22;margin:0;--d:100ms">โจทย์จริงและคนที่ใช่<br><span style="color:#E4B04A">อยู่ใน มฟล. แล้ว</span></h1>
+    <div class="a-fade" style="font-size:17px;font-weight:300;color:rgba(250,246,238,.78);margin:14px 0 18px;line-height:1.5;--d:500ms">มหาวิทยาลัยมีระบบนิเวศด้านสุขภาพครบ ตั้งแต่การรักษา การป้องกันโรค จนถึงการส่งเสริมสุขภาวะ (wellness)</div>
+    <div class="pillar a-rise" style="--d:800ms"><div class="k">หน้างาน</div><div class="v"><b>โรงพยาบาลศูนย์การแพทย์ มฟล.</b> และศูนย์ส่งเสริมสุขภาพ — สนามทดสอบจริง</div></div>
+    <div class="pillar a-rise" style="--d:950ms"><div class="k">ผู้รู้</div><div class="v">สำนักวิชา<b>แพทยศาสตร์ พยาบาลศาสตร์ วิทยาศาสตร์สุขภาพ และการแพทย์บูรณาการ</b> — ผู้ให้โจทย์และรับรองความปลอดภัย</div></div>
+    <div class="pillar a-rise" style="--d:1100ms"><div class="k">ผู้สร้าง</div><div class="v">สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์ — <b>อาจารย์ 40 คน</b> ด้าน AI ซอฟต์แวร์ IoT และการสื่อสาร</div></div>
+    <div class="a-fade" style="font-size:14px;color:rgba(250,246,238,.7);margin:16px 0 8px;--d:1300ms">โจทย์แรกที่รวบรวมไว้แล้วจากบุคลากรการแพทย์</div>
+    <div style="display:flex;gap:10px">
+      <div class="q a-pop" style="--d:1450ms"><span class="n">01</span>งานหลังบ้านของโรงพยาบาล</div>
+      <div class="q a-pop" style="--d:1550ms"><span class="n">02</span>ผู้ป่วยกลุ่มเสี่ยง NCD</div>
+      <div class="q a-pop" style="--d:1650ms"><span class="n">03</span>การดูแลผู้สูงอายุ</div>
+    </div>
+  </div>
+  <div class="aicred">ภาพประกอบสร้างด้วย AI</div>
+  <div class="bridge">ถัดไป → <b>หลักการออกแบบ</b></div>
+  <div class="pg">07</div>
+</section>
+
+<!-- ═══════════ 8 · PRINCIPLES ═══════════ -->
+<section class="s" data-cap="หลักการออกแบบ · Principles">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="done">ใช้ที่ไหน</span><i></i><span class="on">หลักการ</span></div>
+  <div class="head">
+    <h1 class="t">หลักการออกแบบ — <span class="red">คนอยู่ในวงจรเสมอ</span></h1>
+    <div class="sub">หุ่นยนต์ในงานสุขภาพต้อง<b>ปลอดภัย น่าไว้ใจ และวัดผลได้</b> ก่อนจะเก่ง</div>
+  </div>
+  <div class="body" style="gap:44px">
+    <div style="flex:1.25;display:flex;flex-direction:column"><div class="pr a-rise" style="--d:300ms"><div class="n">1</div><div><b>ช่วยพยาบาล ไม่แทนพยาบาล</b><span>หุ่นยนต์รับงานซ้ำ ๆ และงานเดิน ให้คนมีเวลาดูแลคนมากขึ้น การตัดสินใจทางการแพทย์อยู่ที่คนเสมอ</span></div></div><div class="pr a-rise" style="--d:450ms"><div class="n">2</div><div><b>ปลอดภัยก่อนเสมอ</b><span>ทำงานในขอบเขตที่กำหนด หยุดได้ทันที และส่งเรื่องให้พยาบาลเมื่อเกินขอบเขตหรือไม่แน่ใจ</span></div></div><div class="pr a-rise" style="--d:600ms"><div class="n">3</div><div><b>ข้อมูลเป็นของผู้ป่วย</b><span>เก็บเท่าที่จำเป็น ขอความยินยอม ประมวลผลบนเครื่องเมื่อทำได้ และเป็นไปตาม PDPA</span></div></div><div class="pr a-rise" style="--d:750ms"><div class="n">4</div><div><b>เคารพและอบอุ่น</b><span>พูดภาษาไทยและภาษาถิ่นอย่างสุภาพ ให้เกียรติผู้สูงอายุ และไม่ทำให้ใครรู้สึกถูกทิ้งไว้กับเครื่อง</span></div></div><div class="pr a-rise" style="--d:900ms"><div class="n">5</div><div><b>วัดผลได้จริง</b><span>ทุกงานมีตัวชี้วัด เช่น เวลาของพยาบาลที่ได้คืน การล้มที่ตรวจพบ หรือการกินยาตรงเวลา</span></div></div></div>
+    <div style="flex:.85;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--rule);padding-left:36px">
+      <div style="font-size:18px;font-weight:600;margin-bottom:12px">วงจรการทำงานกับคน</div>
+      <div class="loop"><div class="st a-rise" style="--d:1200ms"><span class="d" style="background:#C8102E;color:#FFF0D2">1</span><div><b style="font-weight:600">รับรู้</b> <span style="font-weight:300;color:var(--ink2)">— หุ่นยนต์เห็นหรือได้ยินสิ่งที่ต้องดูแล</span></div></div><div class="ar"></div><div class="st a-rise" style="--d:1350ms"><span class="d" style="background:#E4B04A;color:#1C1610">2</span><div><b style="font-weight:600">เสนอ</b> <span style="font-weight:300;color:var(--ink2)">— สมองเสนอสิ่งที่ควรทำ พร้อมเหตุผล</span></div></div><div class="ar"></div><div class="st a-rise" style="--d:1500ms"><span class="d" style="background:#4A3F33;color:#FFF0D2">3</span><div><b style="font-weight:600">คนตัดสิน</b> <span style="font-weight:300;color:var(--ink2)">— พยาบาลหรือผู้ดูแลยืนยัน เมื่องานมีความเสี่ยง</span></div></div><div class="ar"></div><div class="st a-rise" style="--d:1650ms"><span class="d" style="background:#3F8F6F;color:#FFF0D2">4</span><div><b style="font-weight:600">ลงมือและบันทึก</b> <span style="font-weight:300;color:var(--ink2)">— ทำงาน บันทึก และเรียนรู้จากผลลัพธ์</span></div></div></div>
+    </div>
+  </div>
+  <div class="pg">08</div>
+</section>
+
+
+<!-- ═══════════ 9 · CLOSE ═══════════ -->
+<section class="s qa" data-cap="ถาม–ตอบ · Q&amp;A">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start">
+    <div><div style="font-size:16px;font-weight:500">มหาวิทยาลัยแม่ฟ้าหลวง</div><div class="lbl">Mae Fah Luang University</div></div>
+    <div style="text-align:right"><div style="font-size:16px;font-weight:500">สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์</div><div class="lbl">School of Applied Digital Technology</div></div>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;gap:48px">
+  <div style="flex:0 0 470px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+    <svg class="mark" viewBox="40 136 432 276" width="210" height="134" aria-hidden="true">
+      <defs><linearGradient id="rangeQA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8102E"/><stop offset="1" stop-color="#7A0C1E"/></linearGradient></defs>
+      <circle class="sun" cx="418" cy="180" r="30" fill="#E4B04A"/>
+      <g class="range"><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 400.0 L220.0 400.0 L56.0 400.0 Z" fill="url(#rangeQA)"/><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 L232.0 366.4 L56.0 400.0 Z" fill="#000000" fill-opacity="0.09"/><path d="M56.0 400.0 L232.0 366.4 L220.0 400.0 L56.0 400.0 Z" fill="#000000" fill-opacity="0.225"/><path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 L232.0 366.4 L165.8 276.6 Z" fill="#FFFFFF" fill-opacity="0.09"/><path d="M242.8 299.5 L300.0 297.8 L232.0 366.4 L242.8 299.5 Z" fill="#000000" fill-opacity="0.135"/><path d="M242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 L300.0 297.8 L242.8 299.5 Z" fill="#FFFFFF" fill-opacity="0.125"/><path d="M323.5 246.8 L352.0 346.8 L300.0 297.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.165"/><path d="M323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 346.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.255"/><path d="M300.0 297.8 L352.0 346.8 L232.0 366.4 L300.0 297.8 Z" fill="#000000" fill-opacity="0.105"/><path d="M232.0 366.4 L352.0 346.8 L352.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.195"/><path d="M232.0 366.4 L352.0 400.0 L220.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.285"/><path d="M352.0 346.8 L456.0 400.0 L352.0 400.0 L352.0 346.8 Z" fill="#000000" fill-opacity="0.3"/></g>
+      <g class="ridge" stroke="#F3D48A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".9">
+        <path d="M242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8" style="--L:101.3;--d:0ms"/>
+        <path d="M300.0 297.8 L323.5 246.8" style="--L:56.2;--d:60ms"/>
+        <path d="M323.5 246.8 L352.0 346.8" style="--L:104.0;--d:120ms"/>
+        <path d="M323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0" style="--L:205.0;--d:180ms"/>
+        <path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6" style="--L:166.8;--d:240ms"/>
+        <path d="M165.8 276.6 L232.0 366.4" style="--L:111.5;--d:300ms"/>
+        <path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5" style="--L:84.0;--d:360ms"/>
+        <path d="M232.0 366.4 L300.0 297.8" style="--L:96.6;--d:420ms"/>
+        <path d="M242.8 299.5 L300.0 297.8" style="--L:57.2;--d:480ms"/>
+        <path d="M300.0 297.8 L352.0 346.8" style="--L:71.4;--d:540ms"/>
+        <path d="M232.0 366.4 L242.8 299.5" style="--L:67.7;--d:600ms"/>
+        <path d="M232.0 366.4 L352.0 346.8" style="--L:121.6;--d:660ms"/>
+        <path d="M352.0 346.8 L456.0 400.0" style="--L:116.8;--d:720ms"/>
+        <path d="M352.0 346.8 L352.0 400.0" style="--L:53.2;--d:780ms"/>
+        <path d="M56.0 400.0 L232.0 366.4" style="--L:179.2;--d:840ms"/>
+        <path d="M220.0 400.0 L232.0 366.4" style="--L:35.7;--d:900ms"/>
+        <path d="M232.0 366.4 L352.0 400.0" style="--L:124.6;--d:960ms"/>
+      </g>
+      <g class="spark">
+        <path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8" style="--L:185.3;--d:0ms"/>
+        <path d="M323.5 246.8 L300.0 297.8 L232.0 366.4" style="--L:152.8;--d:700ms"/>
+        <path d="M56.0 400.0 L232.0 366.4 L352.0 346.8" style="--L:300.8;--d:400ms"/>
+        <path d="M300.0 297.8 L352.0 346.8 L456.0 400.0" style="--L:188.3;--d:1100ms"/>
+        <path d="M165.8 276.6 L232.0 366.4 L220.0 400.0" style="--L:147.2;--d:1500ms"/>
+      </g>
+      <g fill="#E4B04A"><circle class="node" cx="300.0" cy="297.8" r="7.2"/><circle class="node" cx="232.0" cy="366.4" r="7.2"/><circle class="node" cx="352.0" cy="346.8" r="7.2"/></g>
+      <g fill="#FFFFFF" stroke="#E4B04A" stroke-width="5"><circle class="node" cx="165.8" cy="276.6" r="12"/><circle class="node" cx="242.8" cy="299.5" r="10"/><circle class="node" cx="323.5" cy="246.8" r="13"/></g>
+    </svg>
+    <div class="red a-wipe" style="font-size:80px;font-weight:600;line-height:1.1;margin-top:16px;--d:1500ms">ถาม – ตอบ</div>
+    <div class="a-growX" style="height:2px;background:var(--red);width:340px;margin:16px 0;transform-origin:center;--d:1900ms"></div>
+    <div class="sub a-fade" style="font-size:19px;line-height:1.55;--d:2100ms">ขอบคุณสำหรับการรับฟัง — ยินดีรับข้อแนะนำ<br>เพื่อสร้าง<b>หุ่นยนต์ที่ช่วยดูแลคนไทย</b></div>
+  </div>
+  <figure class="clph a-focus" style="--d:600ms" aria-label="พยาบาลจับมือผู้ป่วยสูงอายุ"><figcaption>หุ่นยนต์ช่วยงาน — ให้คนมีเวลาดูแลคนมากขึ้น</figcaption></figure>
+  </div>
+  <div class="pg">09</div>
+</section>
+
+
+
+</div></div>
+<div id="grid"></div>
+
+<div id="bar">
+  <button id="prev" aria-label="สไลด์ก่อนหน้า">‹</button>
+  <div id="dots"></div>
+  <span id="cnt">01 / 09</span>
+  <button id="next" aria-label="สไลด์ถัดไป">›</button>
+  <button id="ov" aria-label="ดูภาพรวม" title="ภาพรวมทั้งหมด (G)">▦</button>
+  <span id="ver"></span>
+</div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.s'));
+  var dots = document.getElementById('dots');
+  var cnt = document.getElementById('cnt');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i = 0;
+
+  slides.forEach(function(s, n){
+    var d = document.createElement('i');
+    d.addEventListener('click', function(){ go(n); });
+    dots.appendChild(d);
+  });
+  var dotEls = Array.prototype.slice.call(dots.children);
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function fmt(v, dec){ return v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec}); }
+
+  // Numbers already show their final value; count-up only replays them when a slide is shown.
+  function countUp(slide){
+    if (reduce) return;
+    Array.prototype.forEach.call(slide.querySelectorAll('[data-count]'), function(el){
+      var to = parseFloat(el.dataset.count), dec = parseInt(el.dataset.dec || '0', 10);
+      var t0 = null, dur = 1100;
+      function step(t){
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(2, -10 * p);
+        el.textContent = fmt(p === 1 ? to : to * e, dec);
+        if (p < 1 && slide.classList.contains('play')) requestAnimationFrame(step);
+        else el.textContent = fmt(to, dec);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  function go(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, k){ s.classList.toggle('on', k === i); s.classList.remove('play'); });
+    void slides[i].offsetWidth;            // restart entrance animations on every visit
+    slides[i].classList.add('play');
+    countUp(slides[i]);
+    Array.prototype.forEach.call(document.querySelectorAll('#stage video'), function(v){
+      if (slides[i].contains(v)) { try { v.currentTime = 0; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } catch(e){} }
+      else v.pause();
+    });
+    dotEls.forEach(function(d, k){ d.classList.toggle('on', k === i); });
+    cnt.textContent = pad(i + 1) + ' / ' + pad(slides.length);
+    if (document.body.classList.contains('overview')) toggleOv();
+  }
+
+  function fit(){
+    var vp = document.getElementById('viewport');
+    var s = Math.min(vp.clientWidth / 1280, vp.clientHeight / 720) * 0.955;
+    stage.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  var qaFilm = document.getElementById('qaFilm'), qaSound = document.getElementById('qaSound');
+  if (qaFilm && qaSound) qaSound.addEventListener('click', function(e){
+    e.stopPropagation(); qaFilm.muted = !qaFilm.muted;
+    qaSound.setAttribute('aria-pressed', String(!qaFilm.muted));
+    qaSound.textContent = qaFilm.muted ? 'เปิดเสียง' : 'ปิดเสียง';
+    if (qaFilm.paused) qaFilm.play();
+  });
+  document.getElementById('prev').addEventListener('click', function(){ go(i - 1); });
+  document.getElementById('next').addEventListener('click', function(){ go(i + 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === ' ' && e.target.closest && e.target.closest('button, a')) return;   // let focused controls handle Space
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(slides.length - 1);
+    else if (e.key === 'r' || e.key === 'R') go(i);   // replay the current slide's animation
+    else if (e.key === 'g' || e.key === 'G' || e.key === 'Escape') toggleOv();
+  });
+
+  var built = false;
+  function buildGrid(){
+    var grid = document.getElementById('grid');
+    slides.forEach(function(s, n){
+      var t = document.createElement('div');
+      t.className = 'thumb';
+      var inner = document.createElement('div');
+      inner.className = 'inner';
+      var c = s.cloneNode(true);
+      c.classList.add('on');
+      c.classList.remove('play');
+      c.style.display = 'flex';
+      inner.appendChild(c);
+      t.appendChild(inner);
+      var cap = document.createElement('div');
+      cap.className = 'cap';
+      cap.innerHTML = '<b>' + pad(n + 1) + '</b><span>' + s.dataset.cap + '</span>';
+      t.appendChild(cap);
+      t.addEventListener('click', function(){ go(n); });
+      grid.appendChild(t);
+    });
+    built = true;
+  }
+  function scaleThumbs(){
+    Array.prototype.forEach.call(document.querySelectorAll('.thumb'), function(t){
+      t.querySelector('.inner').style.transform = 'scale(' + (t.clientWidth / 1280) + ')';
+    });
+  }
+  function toggleOv(){
+    if (!built) buildGrid();
+    document.body.classList.toggle('overview');
+    if (document.body.classList.contains('overview')) scaleThumbs();
+  }
+  document.getElementById('ov').addEventListener('click', toggleOv);
+  window.addEventListener('resize', function(){ if (built) scaleThumbs(); });
+
+  go(0);
+
+  // GitHub Pages serves max-age=600, so a browser may show a copy up to 10 min old.
+  // Ask the server for the current version (bypassing the cache); if it is newer,
+  // reload at a URL the browser has not cached. Bump deck-version on every publish.
+  var meta = document.querySelector('meta[name="deck-version"]');
+  var mine = meta ? meta.content : '';
+  document.getElementById('ver').textContent = 'v' + mine;
+  if (location.protocol.indexOf('http') === 0 && window.fetch) {
+    fetch(location.pathname + '?check=' + Date.now(), {cache: 'no-store'})
+      .then(function(r){ return r.ok ? r.text() : ''; })
+      .then(function(t){
+        var m = t.match(/name="deck-version" content="([^"]+)"/);
+        if (m && m[1] !== mine) location.replace(location.pathname + '?v=' + encodeURIComponent(m[1]) + location.hash);
+      })
+      .catch(function(){});
+  }
+})();
+</script>
+</body>
+</html>
