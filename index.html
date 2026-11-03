@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="deck-version" content="2026-11-03.5">
+<meta name="deck-version" content="2026-11-03.6">
 <meta name="description" content="ARIC Care Robot Concept — แนวคิดหุ่นยนต์เพื่อการรักษาและสุขภาวะ: สร้างสมองที่เข้าใจการดูแลคนไทย มหาวิทยาลัยแม่ฟ้าหลวง">
 <link rel="icon" type="image/svg+xml" href="aric_logo_mark.svg?v=d">
 <title>ARIC Care Robot Concept — หุ่นยนต์เพื่อการรักษาและสุขภาวะ</title>
@@ -484,30 +484,29 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 .loop .st{display:flex;align-items:center;gap:12px;font-size:16px}
 .loop .st .d{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--mono);flex:none}
 .loop .ar{margin-left:16px;width:2px;height:16px;background:var(--tan)}
-/* ---------- close: the ask (Embodied Intelligence) + Q&A ---------- */
-.askc{flex:1;min-width:0;align-self:stretch;margin:4px 0 10px;border-radius:10px;padding:26px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;
-  background:radial-gradient(120% 120% at 85% 0%,#A3122C 0%,#7A0C1E 55%,#4A0712 100%);color:#FFF6E6;box-shadow:0 24px 50px -30px rgba(74,7,18,.8)}
-.askc .k{font:600 12.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#F2C46A}
-.askc h2{margin:0;font-size:25px;font-weight:600;line-height:1.3}
-.askc h2 span{display:block;font-size:15px;font-weight:300;color:rgba(255,240,210,.82);margin-top:3px}
-.askc .amt{font:600 78px/1 var(--mono);letter-spacing:-.03em;color:#FFF6E6;text-shadow:0 2px 0 rgba(0,0,0,.15)}
-.askc .amt span{color:#FFF6E6}
-.askc .cap2{font-size:15px;color:#F2C46A;margin-top:6px;font-weight:500}
-.askc .bar2{display:flex;gap:3px;height:12px;border-radius:6px;overflow:hidden}
-.askc .split{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
-.askc .split div{display:flex;align-items:baseline;gap:8px;font-size:15px;white-space:nowrap}
-.askc .split span{margin-left:auto}
-.askc .gets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.askc .gets div{display:flex;align-items:center;gap:12px;background:rgba(255,240,210,.08);box-shadow:inset 0 0 0 1px rgba(255,240,210,.16);border-radius:8px;padding:14px 16px}
-.askc .gets b{font:600 34px/1 var(--mono);color:#F2C46A}
-.askc .gets span{font-size:13.5px;line-height:1.4;color:rgba(255,240,210,.9)}
-.askc .split i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
-.askc .split b{font-weight:500}
-.askc .split span{font:500 14px var(--mono);color:rgba(255,240,210,.85)}
-.askc .plan3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:14px;border-top:1px solid rgba(255,240,210,.2)}
-.yr3 span{display:block;font:600 13px var(--mono);color:#F2C46A}
-.yr3 b{display:block;font-size:16px;font-weight:600;margin-top:2px}
-.yr3 i{display:block;font-style:normal;font-size:13px;font-weight:300;color:rgba(255,240,210,.78);line-height:1.45;margin-top:2px}
+/* ---------- the ask (Embodied Intelligence Upskilling) ---------- */
+.bots{flex:0 0 430px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bot2{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:10px 12px 12px;display:flex;flex-direction:column}
+.bot2 .ph2{flex:1;min-height:0;background:#fff center/contain no-repeat}
+.bot2 b{font-size:17px;font-weight:600;margin-top:6px}
+.bot2 span{font-size:13px;font-weight:300;color:var(--ink2);line-height:1.45;margin-top:2px}
+.get{display:flex;gap:14px;padding:10px 0;border-top:1px solid var(--rule2)}
+.get:first-of-type{border-top:0}
+.get .n{width:30px;height:30px;border-radius:50%;background:var(--red);color:var(--hi);font:600 14px var(--mono);display:grid;place-items:center;flex:none;margin-top:2px}
+.get b{display:block;font-size:18px;font-weight:600}
+.get span{display:block;font-size:14.5px;font-weight:300;color:var(--ink2);line-height:1.5;margin-top:2px}
+.band{display:flex;align-items:center;gap:36px;padding:16px 26px;border-radius:10px;color:#FFF6E6;
+  background:radial-gradient(120% 160% at 90% 0%,#A3122C 0%,#7A0C1E 55%,#4A0712 100%);box-shadow:0 18px 40px -26px rgba(74,7,18,.8)}
+.band .k{font:600 12.5px var(--mono);letter-spacing:.06em;color:#F2C46A}
+.band .amt{font:600 54px/1.05 var(--mono);letter-spacing:-.03em}
+.bsplit{flex:1;display:flex;flex-direction:column;gap:7px}
+.bsplit .bar2{display:flex;gap:3px;height:12px;border-radius:6px;overflow:hidden}
+.bsplit .ln{display:flex;align-items:center;gap:9px;font-size:15px}
+.bsplit .ln i{width:10px;height:10px;border-radius:2px;flex:none}
+.bsplit .ln span{margin-left:auto;font:500 14.5px var(--mono);color:rgba(255,240,210,.88)}
+/* ---------- close ---------- */
+.clph{flex:1;align-self:stretch;margin:6px 0;border-radius:8px;background:#2A0B0B url(care.jpg) 40% 40%/cover no-repeat;position:relative;overflow:hidden}
+.clph figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;background:linear-gradient(0deg,rgba(24,6,6,.88),rgba(24,6,6,0));color:#FFF6E6;font-size:18px;font-weight:500}
 </style>
 </head>
 <body>
@@ -583,7 +582,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 
 
 <section class="s why" data-cap="ทำไม · Why">
-  <div class="thread" aria-hidden="true"><span class="on">ทำไม</span><i></i><span class="">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="on">ทำไม</span><i></i><span class="">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="body" style="gap:50px;align-items:center">
     <div style="flex:1;min-width:0;display:flex;flex-direction:column">
       <div class="lead a-fade" style="--d:200ms">เราเชื่อว่า</div>
@@ -619,7 +618,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 </section>
 
 <section class="s" data-cap="สร้างสมอง ไม่สร้างมือกล">
-  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="head">
     <h1 class="t">ไม่สร้างมือกล — <span class="red">เราสร้างสมองให้หุ่นยนต์</span></h1>
     <div class="sub">ตัวหุ่นยนต์ถูกห่วงโซ่อุปทานจีนครองแล้ว แต่ชั้นที่ต้องเข้าใจ<b>ภาษา ข้อมูล และหน้างานของไทย</b>ยังว่าง</div>
@@ -681,7 +680,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 </section>
 
 <section class="s" data-cap="สมองเพื่อการรักษาและดูแล">
-  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="head">
     <h1 class="t">สมองที่เราจะสร้างก่อน — <span class="red">สมองสำหรับการรักษาและดูแล</span></h1>
     <div class="sub">หุ่นยนต์ที่<b>ช่วยพยาบาลและผู้ดูแล</b>ในโรงพยาบาลและที่บ้าน — ตัวหุ่นซื้อจากผู้ผลิตระดับโลก ส่วนสมองเราสร้างเอง</div>
@@ -753,7 +752,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 
 <!-- ═══════════ 5 · ONE BRAIN, MANY BODIES ═══════════ -->
 <section class="s" data-cap="สมองเดียว หลายร่าง">
-  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="on">แนวคิด</span><i></i><span class="">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="head">
     <h1 class="t">สมองเดียว — <span class="red">ใช้ได้กับหุ่นยนต์หลายแบบ</span></h1>
     <div class="sub">เลือกตัวหุ่นตาม<b>งานและงบประมาณ</b> ส่วนสมอง ข้อมูล และความรู้ด้านการดูแลเป็นของเราเอง ย้ายไปใช้กับหุ่นรุ่นใหม่ได้เสมอ</div>
@@ -776,7 +775,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 
 <!-- ═══════════ 6 · REAL HOSPITALS TODAY ═══════════ -->
 <section class="s" data-cap="หุ่นยนต์ในโรงพยาบาลจริง">
-  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="head">
     <h1 class="t">เกิดขึ้นแล้ว — <span class="red">หุ่นยนต์ในโรงพยาบาลจริง</span></h1>
     <div class="sub">ภาพจากโรงพยาบาลและห้องปฏิบัติการในต่างประเทศ: หุ่นยนต์เริ่ม<b>ทำงานข้างพยาบาลและแพทย์</b>แล้ว</div>
@@ -793,7 +792,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 <section class="s carep dark" data-cap="โจทย์จริงอยู่ใน มฟล.">
   <div class="bg" aria-hidden="true"></div>
   <div class="shade" aria-hidden="true"></div>
-  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span></div>
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="on">ใช้ที่ไหน</span><i></i><span class="">สิ่งที่ขอ</span></div>
   <div class="body" style="position:relative;flex-direction:column;justify-content:center;max-width:700px">
     <h1 class="a-wipe" style="font-size:46px;font-weight:600;line-height:1.22;margin:0;--d:100ms">โจทย์จริงและคนที่ใช่<br><span style="color:#E4B04A">อยู่ใน มฟล. แล้ว</span></h1>
     <div class="a-fade" style="font-size:17px;font-weight:300;color:rgba(250,246,238,.78);margin:14px 0 18px;line-height:1.5;--d:500ms">มหาวิทยาลัยมีระบบนิเวศด้านสุขภาพครบ ตั้งแต่การรักษา การป้องกันโรค จนถึงการส่งเสริมสุขภาวะ (wellness)</div>
@@ -812,15 +811,43 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
   <div class="pg">07</div>
 </section>
 
-<!-- ═══════════ 9 · THE ASK + Q&A ═══════════ -->
-<section class="s qa" data-cap="สิ่งที่เราขอ · ถาม–ตอบ">
+<!-- ═══════════ 8 · THE ASK ═══════════ -->
+<section class="s" data-cap="สิ่งที่เราขอ · Embodied Intelligence">
+  <div class="thread" aria-hidden="true"><span class="done">ทำไม</span><i></i><span class="done">แนวคิด</span><i></i><span class="done">ใช้ที่ไหน</span><i></i><span class="on">สิ่งที่ขอ</span></div>
+  <div class="head">
+    <h1 class="t">สิ่งที่เราขอ — <span class="red">หุ่นยนต์จริง ๒ แพลตฟอร์ม และคนที่พร้อมใช้</span></h1>
+    <div class="sub">โครงการ <b>Embodied Intelligence Upskilling</b>: ยกระดับคณาจารย์สู่ปัญญาประดิษฐ์เชิงกายภาพ — ก้าวแรกที่การลงทุนด้านหุ่นยนต์ทุกก้าวต่อจากนี้ต้องพึ่งพา</div>
+  </div>
+  <div class="body" style="flex-direction:column;gap:14px">
+    <div style="display:flex;gap:26px;flex:1;min-height:0">
+      <div class="bots"><div class="bot2 a-rise" style="--d:200ms"><div class="ph2" style="background-image:url(robot_humanoid.jpg)"></div><b>หุ่นยนต์ฮิวแมนนอยด์</b><span>เดิน หยิบจับ และสื่อสารกับคน · งานบริการและสุขภาพ</span></div><div class="bot2 a-rise" style="--d:350ms"><div class="ph2" style="background-image:url(robot_quadruped.jpg)"></div><b>หุ่นยนต์สี่ขา</b><span>เคลื่อนที่ รับรู้ และนำทาง · ชั้นเรียนและงานตรวจตรา</span></div></div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+        <div style="font-size:18px;font-weight:600;margin-bottom:4px">สิ่งที่เราจะได้</div>
+        <div class="get a-rise" style="--d:600ms"><div class="n">1</div><div><b>ห้องปฏิบัติการ Embodied AI พร้อมหุ่นยนต์จริง</b><span>ติดตั้งที่สำนักวิชา พร้อมเครื่องจำลอง ใช้ได้ทั้งสอน วิจัย และทดสอบต้นแบบ</span></div></div><div class="get a-rise" style="--d:750ms"><div class="n">2</div><div><b>คณาจารย์แกนนำที่ใช้และสอนหุ่นยนต์ได้</b><span>อบรม ณ สถานที่ทั้งสองแพลตฟอร์ม แล้วถ่ายทอดต่อแบบ train-the-trainer</span></div></div><div class="get a-rise" style="--d:900ms"><div class="n">3</div><div><b>หลักสูตรหุ่นยนต์ใน CE · SE · DCE</b><span>รายวิชาเลือกภายใน ๓ ปี (๒๕๗๐–๒๕๗๒) ต่อยอดเป็นแขนงวิชา Embodied AI</span></div></div><div class="get a-rise" style="--d:1050ms"><div class="n">4</div><div><b>ต้นแบบสมองเพื่อการดูแลบนหุ่นยนต์จริง</b><span>เริ่มงานวิจัยด้านสุขภาพและผู้สูงอายุได้ทันที ก่อนห้องปฏิบัติการชุดใหญ่ของ ARIC มาถึง</span></div></div>
+      </div>
+    </div>
+    <div class="band a-rise" style="--d:1300ms">
+      <div><div class="k">งบประมาณที่ขอ · ระยะเริ่มต้น</div><div class="amt">฿<span data-count="3972300">3,972,300</span></div></div>
+      <div class="bsplit">
+        <div class="bar2"><div class="a-growX" style="flex:3472300;background:#F2C46A;--d:1600ms"></div><div class="a-growX" style="flex:500000;background:#FFF0D2;--d:1800ms"></div></div>
+        <div class="ln"><i style="background:#F2C46A"></i>ครุภัณฑ์หุ่นยนต์ ๒ แพลตฟอร์ม<span>฿3,472,300 · 87%</span></div>
+        <div class="ln"><i style="background:#FFF0D2"></i>อบรมคณาจารย์ ณ สถานที่<span>฿500,000 · 13%</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">08</div>
+</section>
+
+
+<!-- ═══════════ 9 · Q&A ═══════════ -->
+<section class="s qa" data-cap="ถาม–ตอบ · Q&amp;A">
   <div style="display:flex;justify-content:space-between;align-items:flex-start">
     <div><div style="font-size:16px;font-weight:500">มหาวิทยาลัยแม่ฟ้าหลวง</div><div class="lbl">Mae Fah Luang University</div></div>
     <div style="text-align:right"><div style="font-size:16px;font-weight:500">สำนักวิชาเทคโนโลยีดิจิทัลประยุกต์</div><div class="lbl">School of Applied Digital Technology</div></div>
   </div>
-  <div style="flex:1;display:flex;align-items:center;gap:40px;min-height:0">
-  <div style="flex:0 0 300px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
-    <svg class="mark" viewBox="40 136 432 276" width="170" height="109" aria-hidden="true">
+  <div style="flex:1;display:flex;align-items:center;gap:48px">
+  <div style="flex:0 0 470px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+    <svg class="mark" viewBox="40 136 432 276" width="210" height="134" aria-hidden="true">
       <defs><linearGradient id="rangeQA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8102E"/><stop offset="1" stop-color="#7A0C1E"/></linearGradient></defs>
       <circle class="sun" cx="418" cy="180" r="30" fill="#E4B04A"/>
       <g class="range"><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 400.0 L220.0 400.0 L56.0 400.0 Z" fill="url(#rangeQA)"/><path d="M56.0 400.0 L122.9 313.1 Q145.4 283.7 165.8 276.6 L232.0 366.4 L56.0 400.0 Z" fill="#000000" fill-opacity="0.09"/><path d="M56.0 400.0 L232.0 366.4 L220.0 400.0 L56.0 400.0 Z" fill="#000000" fill-opacity="0.225"/><path d="M165.8 276.6 Q186.2 269.5 204.5 284.6 L207.5 287.2 Q225.8 302.3 242.8 299.5 L232.0 366.4 L165.8 276.6 Z" fill="#FFFFFF" fill-opacity="0.09"/><path d="M242.8 299.5 L300.0 297.8 L232.0 366.4 L242.8 299.5 Z" fill="#000000" fill-opacity="0.135"/><path d="M242.8 299.5 Q259.8 296.7 275.6 276.1 L283.5 265.7 Q301.8 241.9 323.5 246.8 L300.0 297.8 L242.8 299.5 Z" fill="#FFFFFF" fill-opacity="0.125"/><path d="M323.5 246.8 L352.0 346.8 L300.0 297.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.165"/><path d="M323.5 246.8 Q345.1 251.6 370.3 285.3 L456.0 400.0 L352.0 346.8 L323.5 246.8 Z" fill="#000000" fill-opacity="0.255"/><path d="M300.0 297.8 L352.0 346.8 L232.0 366.4 L300.0 297.8 Z" fill="#000000" fill-opacity="0.105"/><path d="M232.0 366.4 L352.0 346.8 L352.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.195"/><path d="M232.0 366.4 L352.0 400.0 L220.0 400.0 L232.0 366.4 Z" fill="#000000" fill-opacity="0.285"/><path d="M352.0 346.8 L456.0 400.0 L352.0 400.0 L352.0 346.8 Z" fill="#000000" fill-opacity="0.3"/></g>
@@ -853,30 +880,13 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
       <g fill="#E4B04A"><circle class="node" cx="300.0" cy="297.8" r="7.2"/><circle class="node" cx="232.0" cy="366.4" r="7.2"/><circle class="node" cx="352.0" cy="346.8" r="7.2"/></g>
       <g fill="#FFFFFF" stroke="#E4B04A" stroke-width="5"><circle class="node" cx="165.8" cy="276.6" r="12"/><circle class="node" cx="242.8" cy="299.5" r="10"/><circle class="node" cx="323.5" cy="246.8" r="13"/></g>
     </svg>
-    <div class="red a-wipe" style="font-size:54px;font-weight:600;line-height:1.1;margin-top:14px;white-space:nowrap;--d:1500ms">ถาม – ตอบ</div>
-    <div class="a-growX" style="height:2px;background:var(--red);width:220px;margin:14px 0;transform-origin:center;--d:1900ms"></div>
-    <div class="sub a-fade" style="font-size:16px;line-height:1.55;--d:2100ms">ขอบคุณสำหรับการรับฟัง<br>ก้าวแรกคือ<b>คนที่พร้อมสร้างสมองให้หุ่นยนต์</b></div>
+    <div class="red a-wipe" style="font-size:80px;font-weight:600;line-height:1.1;margin-top:16px;white-space:nowrap;--d:1500ms">ถาม – ตอบ</div>
+    <div class="a-growX" style="height:2px;background:var(--red);width:340px;margin:16px 0;transform-origin:center;--d:1900ms"></div>
+    <div class="sub a-fade" style="font-size:19px;line-height:1.55;--d:2100ms">ขอบคุณสำหรับการรับฟัง — ยินดีรับข้อแนะนำ<br>เพื่อสร้าง<b>หุ่นยนต์ที่ช่วยดูแลคนไทย</b></div>
   </div>
-  <div class="askc a-rise" style="--d:300ms">
-    <div class="k">สิ่งที่เราขอ · Embodied Intelligence Upskilling</div>
-    <h2>ยกระดับคณาจารย์สู่ปัญญาประดิษฐ์เชิงกายภาพ<br><span>บนหุ่นยนต์จริง ๒ แพลตฟอร์ม — ฮิวแมนนอยด์ และหุ่นยนต์สี่ขา</span></h2>
-    <div class="amtrow">
-      <div><div class="amt">฿<span data-count="3972300">3,972,300</span></div><div class="cap2">งบประมาณระยะเริ่มต้น · ปีงบประมาณ ๒๕๗๐</div></div>
-    </div>
-    <div class="bar2"><div class="a-growX" style="flex:3472300;background:#F2C46A;--d:900ms"></div><div class="a-growX" style="flex:500000;background:#FFF0D2;--d:1100ms"></div></div>
-    <div class="split">
-      <div><i style="background:#F2C46A"></i><b>ครุภัณฑ์หุ่นยนต์ ๒ แพลตฟอร์ม</b><span>฿3,472,300 · 87%</span></div>
-      <div><i style="background:#FFF0D2"></i><b>อบรมคณาจารย์ ณ สถานที่</b><span>฿500,000 · 13%</span></div>
-    </div>
-    <div class="gets">
-      <div class="a-rise" style="--d:1300ms"><b>๒</b><span>แพลตฟอร์มจริง<br>ฮิวแมนนอยด์ + สี่ขา</span></div>
-      <div class="a-rise" style="--d:1420ms"><b>๓</b><span>หลักสูตรได้ใช้<br>CE · SE · DCE</span></div>
-      <div class="a-rise" style="--d:1540ms"><b>๔๐</b><span>คณาจารย์ด้าน AI ซอฟต์แวร์<br>IoT และการสื่อสาร</span></div>
-    </div>
-    <div class="plan3"><div class="yr3 a-rise" style="--d:1700ms"><span>๒๕๗๐</span><b>สร้างขีดความสามารถ</b><i>อบรมคณาจารย์แกนนำ ติดตั้งห้องปฏิบัติการ</i></div><div class="yr3 a-rise" style="--d:1850ms"><span>๒๕๗๑</span><b>บูรณาการสู่การสอน</b><i>รายวิชาเลือก CE · SE · DCE และเริ่มวิจัย</i></div><div class="yr3 a-rise" style="--d:2000ms"><span>๒๕๗๒</span><b>ขยายผลร่วมกับ ARIC</b><i>วิทยากรภายนอก · ศูนย์ฝึกอบรมระดับภูมิภาค</i></div></div>
+  <figure class="clph a-focus" style="--d:600ms" aria-label="พยาบาลจับมือผู้ป่วยสูงอายุ"><figcaption>หุ่นยนต์ช่วยงาน — ให้คนมีเวลาดูแลคนมากขึ้น</figcaption></figure>
   </div>
-  </div>
-  <div class="pg">08</div>
+  <div class="pg">09</div>
 </section>
 
 
@@ -887,7 +897,7 @@ h1.t{font-size:38px;font-weight:600;margin:0;letter-spacing:-.01em;line-height:1
 <div id="bar">
   <button id="prev" aria-label="สไลด์ก่อนหน้า">‹</button>
   <div id="dots"></div>
-  <span id="cnt">01 / 08</span>
+  <span id="cnt">01 / 09</span>
   <button id="next" aria-label="สไลด์ถัดไป">›</button>
   <button id="ov" aria-label="ดูภาพรวม" title="ภาพรวมทั้งหมด (G)">▦</button>
   <span id="ver"></span>
