@@ -9,9 +9,12 @@ Built by `scripts/wellness_deck/build_robot_concept.py` in the IIC workspace fro
 Robot photos are real robots placed on AI-generated scenes.
 
 ## Image sources
-- Slide 5 photos (Wikimedia Commons): humanoid — Sayanesy (CC0); four-legged robot — Jonte (CC BY-SA 4.0,
-  https://commons.wikimedia.org/wiki/File:Spot_by_Boston_Dynamics.jpg); hospital delivery robot — Mikael Häggström (CC0);
-  social robot — Beat Mattmann, Nadja Meyenhofer (CC0). Fetched by `scripts/wellness_deck/fetch_commons_photos.py`.
+- Slide 5 photos: humanoid — Sayanesy (CC0, Wikimedia Commons); four-legged robot — Jonte (CC BY-SA 4.0, Wikimedia Commons,
+  https://commons.wikimedia.org/wiki/File:Spot_by_Boston_Dynamics.jpg); hospital delivery robot — Phenikaa-X
+  (https://portal.phenikaa-x.com/wp-content/uploads/2025/07/AMR-H1-Phenikaa-X-at-hospital-768x1024.jpeg);
+  bedside speaker with screen — Y2kcrazyjoker4 (CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Google_Home_Hub_on_table.jpg),
+  adapted: a Thai medicine-reminder screen drawn onto the display; the adapted image (body_4.jpg) is shared under CC BY-SA 4.0.
+  Built by `scripts/wellness_deck/fetch_commons_photos.py` (1–2) and `make_home_cards.py` (3–4).
 - Slide 6 real-hospital stills: frames from YouTube videos by Perigee Tech (https://www.youtube.com/shorts/McytN-tcexw) and
   CNET "What The Future" (https://www.youtube.com/watch?v=vVZpFGoa-io), credited on the slide.
   Extracted by `scripts/wellness_deck/extract_real_frames.py`.
